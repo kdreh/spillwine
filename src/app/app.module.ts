@@ -8,8 +8,9 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './settings/material.module';
 import { NavigationComponent } from './navigation/navigation.component';
+import { AboutComponent } from './pages/about/about.component';
 
-const pages=[AppComponent, HomeComponent, ContactComponent,NavigationComponent]
+const pages=[AppComponent, HomeComponent, ContactComponent,NavigationComponent, AboutComponent]
 
 @NgModule({
   declarations: pages,
