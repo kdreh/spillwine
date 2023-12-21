@@ -1,7 +1,9 @@
-.navigation-bar {
-  background-color: #141414;
-  color: #fff;
-  text-transform: uppercase;
+.brand{
+
+}
+
+.mat-toolbar{
+height: 7vh;
 }
 
 .nav-spacer {
@@ -9,23 +11,32 @@
 }
 
 .sidenav-container {
-  height: 100%;
+  max-width: 10vw;
+}
+div {
+  overflow: none;
 }
 
-.sidenav {
-  width: 200px;
+.mat-sidenav-container{
+min-height: 90vh !important;
+
+}
+mat-sidenav {
+  width: 100%;
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
+a{
+  // text-decoration: none;
+  // font-size: 110%;
+  // white-space: normal;
 }
 
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
+button{
+  // font-size: 110%;
+  // min-width: min-content;
 }
 
+<<<<<<< Updated upstream
 // Test
 * {
   box-sizing: border-box;
@@ -123,4 +134,17 @@ body {
     height: calc(100vh - 50px);
     overflow-y: auto;
   }
+=======
+.example-icon {
+  // padding: 0 14px;
+}
+
+.nav-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-sidenav-content{
+    // font-size: 200%;
+    // text-align: center;
+>>>>>>> Stashed changes
 }
