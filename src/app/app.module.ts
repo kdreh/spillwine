@@ -8,16 +8,12 @@ import { MaterialModule } from './settings/material.module';
 import { SiteModule } from './settings/site.module';
 import { pages } from './settings/app.components';
 import { NavigationComponent } from './navigation/navigation.component';
-import { AboutComponent } from './pages/about/about.component';
 
-<<<<<<< Updated upstream
-const pages=[AppComponent, HomeComponent, ContactComponent,NavigationComponent, AboutComponent]
-=======
+
 
 
 const mainComponents = [AppComponent, NavigationComponent, pages]
 const siteMod =[BrowserModule,AppRoutingModule,BrowserAnimationsModule,MaterialModule,SiteModule]
->>>>>>> Stashed changes
 
 @NgModule({
   declarations:[mainComponents],

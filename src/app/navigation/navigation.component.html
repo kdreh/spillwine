@@ -1,41 +1,3 @@
-<<<<<<< Updated upstream
-<mat-sidenav-container class="sidenav-container">
-
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-     >
-
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
-    
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar class="navigation-bar">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>Spillwine Publishing</span>
-      <span class="nav-spacer"></span>
-      <div *ngIf="!isHandset$ ">
-        <button mat-button routerLink="/home">Home</button>
-        <button mat-button routerLink="/about">About</button>
-      </div>
-
-    </mat-toolbar> 
-    <router-outlet></router-outlet>
- </mat-sidenav-content>
-</mat-sidenav-container>
-=======
 
   <mat-toolbar>
     <div fxShow="true" fxHide.gt-sm="true">
@@ -66,4 +28,3 @@
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
->>>>>>> Stashed changes
