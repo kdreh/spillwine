@@ -1,0 +1,76 @@
+// Initialize variables
+
+$spacer: 20px;
+$container: 20px;
+$p-1: 10px;
+
+$mobile :480px;
+$desktop: 1440px;
+
+
+//  Setup style classes
+.full-page {
+  height: 95vh;
+}
+.half-page {
+  height: 40vh;
+}
+.spacer {
+    padding: $spacer
+}
+
+.container {
+    padding:$container;
+
+}
+.center {
+    display: flex;
+    justify-content: center;
+}
+.middle {
+    display: flex;
+    align-items: center;
+}
+
+.pt-1 {
+    padding-top: $p-1;
+}
+.pt-5 {
+  padding-top: 100px;
+}
+
+.shadow {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0, 0, 0, 0.099);
+}
+
+// mixin media queries
+ @mixin devices ($breakpoint) { 
+  
+    @if $breakpoint == tablet {    
+    @media only screen and (max-width: $tablet) {
+      @content;
+    }
+  }
+ 
+  @if $breakpoint == mobile {
+    @media only screen and (max-width: $mobile) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop {
+    @media only screen and ( max-width : $desktop) {
+        @content;
+    }
+  }
+}
+// mixin card / image size
+@mixin image ($width, $height){
+  width: $width;
+  height: $height;
+}
+
+@mixin card ($width, $height){
+  width:  $width;
+  height: $height
+}

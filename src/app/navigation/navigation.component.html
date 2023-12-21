@@ -1,5 +1,5 @@
 
-  <mat-toolbar>
+  <mat-toolbar class="primary-bg shadow">
     <div fxShow="true" fxHide.gt-sm="true">
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
@@ -14,17 +14,18 @@
       <button mat-button routerLink="/home">Home</button>
       <button mat-button routerLink="/contact">Contact</button>
     </div>
-
   </mat-toolbar>
+  <!-- <div class="spacer"></div> -->
   <mat-sidenav-container fxFlexFill class="sidenav-container">
 
-    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+    <mat-sidenav class="spacer" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
       <div fxLayout="column">
         <button mat-button routerLink="/home" (click)="sidenav.toggle()">Home</button>
         <button mat-button routerLink="/contact" (click)="sidenav.toggle()">Contact</button>
       </div>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
+      <div class="spacer"></div>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

@@ -1,9 +1,25 @@
-.brand{
+@import '../../assets/style/color';
+
+::ng-deep .mat-toolbar {
+  z-index: 999;
+  position: fixed;
 
 }
 
+.brand{
+
+  & span {
+    text-transform: uppercase;
+    font-weight: 200;
+    font-size: 1.2rem;
+  }
+
+}
+
+
 .mat-toolbar{
-height: 7vh;
+height: 10vh;
+;
 }
 
 .nav-spacer {
@@ -25,26 +41,13 @@ mat-sidenav {
   width: 100%;
 }
 
-a{
-  // text-decoration: none;
-  // font-size: 110%;
-  // white-space: normal;
-}
+
 
 button{
-  // font-size: 110%;
-  // min-width: min-content;
-}
-
-.example-icon {
-  // padding: 0 14px;
+  font-size: 1.2rem;
+  font-weight: 200;
 }
 
 .nav-spacer {
   flex: 1 1 auto;
-}
-
-.mat-sidenav-content{
-    // font-size: 200%;
-    // text-align: center;
 }

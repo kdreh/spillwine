@@ -1,0 +1,46 @@
+@import '../../../assets/style/comp';
+@import '../../../assets/style/color';
+
+
+.hero-bg {
+    min-height: 500px;
+    // background-image: url('../../../assets/img/KKH_5460.jpg');
+    background-color: $primaryOverlay;
+    // background: linear-gradient(rgba(125, 207, 225, 0.283), rgba(159, 0, 138, 0.736)), url("../../../assets/img/KKH_5460.jpg"); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.hero-header-text {
+        font-size: 5rem;
+        font-weight: 900;
+        width: 45%;
+        line-height: 5rem;
+        & span {
+            font-weight: 100 !important;
+        
+        }
+    @include devices(mobile) {
+        font-size: 3rem;
+        font-weight: 900;
+        width: 100%;
+        line-height: 3rem;
+        & span {
+            font-weight: 100 !important;
+        
+        }
+    }
+}
+.hero-sub-header {
+    width: 45%;
+    font-weight:lighter;
+    line-height: 1.7rem;
+    font-size: 1.2rem;
+    @include devices(mobile) {
+        width: 100%;
+    }
+
+}

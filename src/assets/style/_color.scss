@@ -1,0 +1,19 @@
+
+$primary:#009F7A;
+$primaryOverlay : #009f7a0d;
+$secondary:#1D6A7E;
+
+.primary-bg {
+    background-color: $primary !important;
+    color: #fff !important;
+}
+.primary-text {
+    color: $primary;
+    
+}
+.secondary-bg {
+    background-color: $secondary;
+}
+.secondary-text {
+    color:$secondary
+}
