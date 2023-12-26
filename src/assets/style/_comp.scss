@@ -1,0 +1,127 @@
+// Initialize variables
+
+$_10px: 10px;
+$_20px:20px;
+$_30px:30px;
+$_50px:50px;
+$_75px:75px;
+$_100px:100px;
+$_320px:320px;
+$_450px:450px;
+$_480px: 480px;
+$_1440px: 1440px;
+
+$_30vh:30vh;
+$_70vh: 70vh;
+$_95vh:95vh;
+
+
+$p-1: $_10px;
+$mobile :$_480px;
+$desktop: $_1440px;
+$shadow:  0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0, 0, 0, 0.099);
+
+//  Setup style classes
+.full-page {
+  max-height: $_95vh;
+}
+.half-page {
+  min-height: $_70vh;
+}
+.cta-page {
+  min-height: $_30vh;
+}
+.section {
+  min-height: $_30vh;
+  padding: $_50px;
+  & #section {
+    margin-left: $_10px;
+    margin-right: $_10px;
+}
+}
+.spacer {
+    padding: $_20px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+.middle {
+    display: flex;
+    align-items: center;
+}
+
+.pt-1 {
+    padding-top: $p-1;
+}
+.pt-5 {
+  padding-top: $_100px;
+}
+
+.mt-100 {
+
+ padding-top: $_100px;
+}
+
+.shadow {
+  box-shadow: $shadow;
+}
+
+.box-card {
+  padding:$_10px;
+  max-width: $_450px;
+  box-shadow: $shadow;
+  & .box-title{
+    font-weight: 200;
+    font-size: 1.5rem;
+  }
+  & p {
+    margin-top: $_10px;
+    font-weight: 100;
+    line-height: 1.5rem;
+  }
+}
+
+/* grid system */
+.flex-col {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.flex-col-item {
+  min-width: $_450px;
+}
+
+// mixin media queries
+ @mixin devices ($breakpoint) { 
+  
+    @if $breakpoint == tablet {    
+    @media only screen and (max-width: $tablet) {
+      @content;
+    }
+  }
+ 
+  @if $breakpoint == mobile {
+    @media only screen and (max-width: $mobile) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop {
+    @media only screen and ( min-width : $desktop) {
+        @content;
+    }
+  }
+}
+// mixin card / image size
+@mixin image ($width, $height){
+  width: $width;
+  height: $height;
+}
+
+@mixin card ($width, $height){
+  width:  $width;
+  height: $height
+}

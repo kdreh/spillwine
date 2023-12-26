@@ -1,25 +1,95 @@
-.hero {
-    height: 100vh;
-    background-color: #141414; ;
-    color: #fff;
+@import '../../../assets/style/comp';
+@import '../../../assets/style/color';
+
+.half-page {
+    display: flex;
+    align-items: center;
+}
+
+.hero-container {
+    // justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    color: white;
+    padding: 1rem;
+  
+    @include devices(mobile){
+        padding-top: 100px;
+    }
+    .hero-text { 
+        padding-top: 50px;
+        width: 45%;
+        @include devices(mobile){
+            width: 100%;
+        }
+    }
+   & .hero-text h1 {
+    font-size: 3.5rem;
+    @include devices (mobile){
+        line-height: 3rem;
+    }
+
+    & span {
+        font-weight: 100;
+        color:$primary;
+    }
+   }
+
+   p {
+    font-weight: 100;
+    width: 90%;
+    line-height: 1.5rem;
+    @include devices (mobile){
+        margin-top: 1rem;
+        width: 100%;
+        }
+    }
+    .hero-cta {
+        margin-top: 1rem;
+
+        & button {
+            letter-spacing: 0;
+        }
+    }
+    & .hero-image img{
+        @include image (500px, auto);
+        @include devices (mobile){
+            display: none;
+        }
+    }
+}
+#section {
+    h1 {
+        font-size: 2.3rem;
+        font-weight: 200;
+    }
+}
+.box-card {
+    .box {
+        .box-image img {
+            @include image (330px, auto)
+        }
+        .box-title {
+            color: $primary;
+            margin-bottom: 1rem;
+        }
+        ul {
+            padding-left: 30px;
+
+            & li {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+}
+
+.responsive {
+    @include image(155px !important, auto)
+}
+.demo {
     display: flex;
     justify-content: center;
-    align-items: center;
-    
-    & .hero-text {
-        font-size: min(2.5rem, 3em);
-        text-align: center;
-        text-transform: uppercase;
-    }
-    & .hero-text h1 {
-        margin-bottom: 25px;
-    }   
-    & .hero-small-text {
-        display: block;
-        font-weight: 100;
-        letter-spacing: 0.2rem;
-        text-transform: none;
-        font-size: min(1.5rem);
-    }
-  
 }

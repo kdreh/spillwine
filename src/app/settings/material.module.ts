@@ -5,7 +5,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-const materialMod = [MatButtonModule, LayoutModule, MatToolbarModule,MatSidenavModule,MatIconModule,MatListModule]
+import {MatCardModule} from '@angular/material/card';
+
+
+const materialMod = [MatButtonModule, LayoutModule, MatToolbarModule,MatSidenavModule,MatIconModule,MatListModule,MatCardModule]
 
 @NgModule({
     imports: materialMod,

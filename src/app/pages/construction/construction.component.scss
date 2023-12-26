@@ -1,0 +1,25 @@
+.hero {
+    height: 100vh;
+    background-color: #141414; ;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    & .hero-text {
+        font-size: min(2.5rem, 3em);
+        text-align: center;
+        text-transform: uppercase;
+    }
+    & .hero-text h1 {
+        margin-bottom: 25px;
+    }   
+    & .hero-small-text {
+        display: block;
+        font-weight: 100;
+        letter-spacing: 0.2rem;
+        text-transform: none;
+        font-size: min(1.5rem);
+    }
+  
+}

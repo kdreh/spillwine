@@ -1,20 +1,38 @@
+@import './assets/style/_color';
+@import './assets//style/comp';
 * { 
     margin:0;
     padding:0;
+    box-sizing: border-box;
 }
 html{
     font : normal 600 'Open Sans', sans-serif;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
 }
 
-.full-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   
+button {
+    border-radius: 0px !important;
+    letter-spacing: normal !important;
 }
-.spacer {
-    padding: 15px
-}
+.flex-col-item {
+    @include devices (mobile) {
+        min-width: 350px !important;
+    }
+  }
+  .section {
+    @include devices (mobile) {
+        padding: 0 !important;
+    }
+  }
+  .cta-page {
+    padding-top: $_30px;
 
-
+    .demo-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+  }
+  

@@ -1,22 +1,56 @@
-.navigation-bar {
-  background-color: #141414;
-  color: #fff;
-  text-transform: uppercase;
+@import '../../assets/style/color';
+@import '../../assets/style/comp';
+
+::ng-deep .mat-toolbar {
+  z-index: 999;
+  position: fixed;
+
 }
+
+.brand{
+  & .logo {
+    @include image (150px, 130px)
+  }
+  & span {
+    text-transform: uppercase;
+    font-weight: 200;
+    font-size: 1.2rem;
+  }
+
+}
+
+
+.mat-toolbar{
+height: 10vh;
+;
+}
+
+.nav-spacer {
+  flex: 1 1 auto;
+}
+
 .sidenav-container {
-  height: 100%;
+  max-width: 10vw;
+}
+div {
+  overflow: none;
 }
 
-.sidenav {
-  width: 200px;
+.mat-sidenav-container{
+min-height: 90vh !important;
+
+}
+mat-sidenav {
+  width: 100%;
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
+
+
+button{
+  font-size: 1.2rem;
+  font-weight: 200;
 }
 
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
+.nav-spacer {
+  flex: 1 1 auto;
 }
