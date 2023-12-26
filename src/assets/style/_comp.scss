@@ -1,28 +1,48 @@
 // Initialize variables
 
-$spacer: 20px;
-$container: 20px;
-$p-1: 10px;
+$_10px: 10px;
+$_20px:20px;
+$_30px:30px;
+$_50px:50px;
+$_75px:75px;
+$_100px:100px;
+$_320px:320px;
+$_450px:450px;
+$_480px: 480px;
+$_1440px: 1440px;
 
-$mobile :480px;
-$desktop: 1440px;
+$_30vh:30vh;
+$_70vh: 70vh;
+$_95vh:95vh;
 
+
+$p-1: $_10px;
+$mobile :$_480px;
+$desktop: $_1440px;
+$shadow:  0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0, 0, 0, 0.099);
 
 //  Setup style classes
 .full-page {
-  height: 95vh;
+  max-height: $_95vh;
 }
 .half-page {
-  height: 40vh;
+  min-height: $_70vh;
+}
+.cta-page {
+  min-height: $_30vh;
+}
+.section {
+  min-height: $_30vh;
+  padding: $_50px;
+  & #section {
+    margin-left: $_10px;
+    margin-right: $_10px;
+}
 }
 .spacer {
-    padding: $spacer
+    padding: $_20px;
 }
 
-.container {
-    padding:$container;
-
-}
 .center {
     display: flex;
     justify-content: center;
@@ -36,11 +56,42 @@ $desktop: 1440px;
     padding-top: $p-1;
 }
 .pt-5 {
-  padding-top: 100px;
+  padding-top: $_100px;
+}
+
+.mt-100 {
+
+ padding-top: $_100px;
 }
 
 .shadow {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0, 0, 0, 0.099);
+  box-shadow: $shadow;
+}
+
+.box-card {
+  padding:$_10px;
+  max-width: $_450px;
+  box-shadow: $shadow;
+  & .box-title{
+    font-weight: 200;
+    font-size: 1.5rem;
+  }
+  & p {
+    margin-top: $_10px;
+    font-weight: 100;
+    line-height: 1.5rem;
+  }
+}
+
+/* grid system */
+.flex-col {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.flex-col-item {
+  min-width: $_450px;
 }
 
 // mixin media queries
@@ -59,7 +110,7 @@ $desktop: 1440px;
   }
 
   @if $breakpoint == desktop {
-    @media only screen and ( max-width : $desktop) {
+    @media only screen and ( min-width : $desktop) {
         @content;
     }
   }

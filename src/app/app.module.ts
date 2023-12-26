@@ -8,11 +8,12 @@ import { MaterialModule } from './settings/material.module';
 import { SiteModule } from './settings/site.module';
 import { pages } from './settings/app.components';
 import { NavigationComponent } from './navigation/navigation.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
 
-const mainComponents = [AppComponent, NavigationComponent, pages]
+const mainComponents = [AppComponent, NavigationComponent, pages, FooterComponent]
 const siteMod =[BrowserModule,AppRoutingModule,BrowserAnimationsModule,MaterialModule,SiteModule]
 
 @NgModule({

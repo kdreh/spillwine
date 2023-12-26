@@ -1,46 +1,95 @@
 @import '../../../assets/style/comp';
 @import '../../../assets/style/color';
 
-
-.hero-bg {
-    min-height: 500px;
-    // background-image: url('../../../assets/img/KKH_5460.jpg');
-    background-color: $primaryOverlay;
-    // background: linear-gradient(rgba(125, 207, 225, 0.283), rgba(159, 0, 138, 0.736)), url("../../../assets/img/KKH_5460.jpg"); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
+.half-page {
+    display: flex;
+    align-items: center;
 }
 
-.hero-header-text {
-        font-size: 5rem;
-        font-weight: 900;
+.hero-container {
+    // justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    color: white;
+    padding: 1rem;
+  
+    @include devices(mobile){
+        padding-top: 100px;
+    }
+    .hero-text { 
+        padding-top: 50px;
         width: 45%;
-        line-height: 5rem;
-        & span {
-            font-weight: 100 !important;
-        
+        @include devices(mobile){
+            width: 100%;
         }
-    @include devices(mobile) {
-        font-size: 3rem;
-        font-weight: 900;
-        width: 100%;
+    }
+   & .hero-text h1 {
+    font-size: 3.5rem;
+    @include devices (mobile){
         line-height: 3rem;
-        & span {
-            font-weight: 100 !important;
-        
+    }
+
+    & span {
+        font-weight: 100;
+        color:$primary;
+    }
+   }
+
+   p {
+    font-weight: 100;
+    width: 90%;
+    line-height: 1.5rem;
+    @include devices (mobile){
+        margin-top: 1rem;
+        width: 100%;
+        }
+    }
+    .hero-cta {
+        margin-top: 1rem;
+
+        & button {
+            letter-spacing: 0;
+        }
+    }
+    & .hero-image img{
+        @include image (500px, auto);
+        @include devices (mobile){
+            display: none;
         }
     }
 }
-.hero-sub-header {
-    width: 45%;
-    font-weight:lighter;
-    line-height: 1.7rem;
-    font-size: 1.2rem;
-    @include devices(mobile) {
-        width: 100%;
+#section {
+    h1 {
+        font-size: 2.3rem;
+        font-weight: 200;
+    }
+}
+.box-card {
+    .box {
+        .box-image img {
+            @include image (330px, auto)
+        }
+        .box-title {
+            color: $primary;
+            margin-bottom: 1rem;
+        }
+        ul {
+            padding-left: 30px;
+
+            & li {
+                margin-bottom: 1rem;
+            }
+        }
     }
 
+}
+
+.responsive {
+    @include image(155px !important, auto)
+}
+.demo {
+    display: flex;
+    justify-content: center;
 }
