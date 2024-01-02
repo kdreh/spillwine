@@ -1,26 +1,26 @@
-
  <mat-toolbar class="primary-bg shadow">
-    <div fxShow="true" fxHide.gt-sm="true">
-      <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </div>
+  <div fxShow="true" fxHide.gt-sm="true">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+   <div class="nav-align">
 
     <a class="brand" routerLink="/home" >
-      <!-- <span>Spillwine</span> -->
       <img class="logo" src="../../assets/img/2023-12-12 Spillwine Publications-07.png" alt="Spillwine"/>
     </a>
     <span class="nav-spacer"></span>
     <div fxShow="true" fxHide.lt-md="true" *ngFor="let page of pageRoute">
       <button mat-button routerLink={{page.route}}>{{page.page}}</button>
     </div>
+  </div>
   </mat-toolbar>
 
   <mat-sidenav-container fxFlexFill class="sidenav-container">
   
     <mat-sidenav #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
       <div class="mt-100"></div>
-      <div fxLayout="column" *ngFor="let page of pageRoute">
+      <div class="overflow" fxLayout="column" *ngFor="let page of pageRoute">
         <button mat-button routerLink={{page.route}} (click)="sidenav.toggle()">{{page.page}}</button>
       </div>
     </mat-sidenav>

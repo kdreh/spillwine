@@ -1,34 +1,34 @@
 @import '../../../assets/style/comp';
 @import '../../../assets/style/color';
 
-.half-page {
-    display: flex;
-    align-items: center;
-}
 
 .hero-container {
-    // justify-content: center;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    justify-content: center !important;
     align-items: center;
-    color: white;
+    flex-wrap: wrap;
+    min-height: auto;
     padding: 1rem;
-  
-    @include devices(mobile){
-        padding-top: 100px;
+    // margin-left: -10%;
+
+    @include devices (mobile) {
+        margin-left: 0;
     }
+    
     .hero-text { 
         padding-top: 50px;
-        width: 45%;
         @include devices(mobile){
-            width: 100%;
+    
         }
     }
    & .hero-text h1 {
-    font-size: 3.5rem;
+
+    font-size: 5rem;
     @include devices (mobile){
         line-height: 3rem;
+        font-size: 3rem;
+      
     }
 
     & span {
@@ -39,7 +39,7 @@
 
    p {
     font-weight: 100;
-    width: 90%;
+    width: 50%;
     line-height: 1.5rem;
     @include devices (mobile){
         margin-top: 1rem;
