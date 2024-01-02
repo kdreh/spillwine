@@ -89,7 +89,10 @@
 .responsive {
     @include image(155px !important, auto)
 }
-.demo {
-    display: flex;
-    justify-content: center;
+.cta {
+    min-height: 20vh;
+
+    & .center {
+        flex-direction: column;
+    }
 }
