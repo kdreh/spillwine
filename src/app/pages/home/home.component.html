@@ -1,68 +1,67 @@
-<main class="half-page dark-bg">
-    <section id="section">
-        <div class="hero-container">
-            <div class="hero-text">
-                <h1>Personalized <span>News Hub</span></h1>
-                <p>
-                    Welcome to Spillwine, where news meets personalization! Say goodbye to generic headlines and hello to a curated news experience designed just for you.
-                </p>
-                <div class="hero-cta">
-                    <button mat-raised-button class="primary-bg" routerLink="/about">Learn More</button>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="../../../assets/img/illustrations/news-art.png"  alt="hero image"/>
+<main class="half-page dark-bg  ">
+    <div class="hero-container">
+        <div class="hero-text">
+            <h1>Personalized <span>News Hub</span></h1>
+            <p>
+                Welcome to Spillwine, where news meets personalization! Say goodbye to generic headlines and hello to a curated news experience designed just for you.
+            </p>
+            <div class="hero-cta">
+                <button mat-raised-button class="primary-bg" routerLink="/about">Learn More</button>
             </div>
         </div>
-    </section>
+       <img src="../../../assets/img/illustrations/news-art.png" />
+   
+    </div>
 </main>
 
 <main class="section white-bg">
-    <section id="section">
-        <h1>What Sets us Apart</h1>
-        <div class="spacer"></div>
-        <div class="flex-col">
-            <div class="flex-col-item">
-               <div class="box-card">
-                <div class="box">
-                    <div class="box-image">
-                        <img src="../../../assets/img/illustrations/diversed.png" alt="diversed-art" />
+    <section id="section" class="center">
+        <article>
+            <h1>What Sets us Apart</h1>
+            <div class="spacer"></div>
+            <div class="flex-col">
+                <div class="flex-col-item">
+                   <div class="box-card">
+                    <div class="box">
+                        <div class="box-image">
+                            <img src="../../../assets/img/illustrations/diversed.png" alt="diversed-art" />
+                        </div>
+                        <h2 class="box-title">Personalization Beyond the Basics</h2>
+                        <p>
+                            At Spillwine, we go beyond addressing you by your first name. We dive deep into your behavior, historical interactions, and interests. Our dynamic content adapts in real time, ensuring that every article, video, or snippet you encounter aligns with what matters most to you.
+                        </p>
                     </div>
-                    <h2 class="box-title">Personalization Beyond the Basics</h2>
-                    <p>
-                        At Spillwine, we go beyond addressing you by your first name. We dive deep into your behavior, historical interactions, and interests. Our dynamic content adapts in real time, ensuring that every article, video, or snippet you encounter aligns with what matters most to you.
-                    </p>
+                   </div>
                 </div>
-               </div>
-            </div>
-            <div class="flex-col-item">
-                <div class="box-card primary-bg">
-                 <div class="box">
-                     <h2 class="box-title light-text">How It Works</h2>
-                     <ul *ngFor="let works of howitWorks">
-                        <li>
-                            <span>{{works.title}}</span>: <p>{{works.content}}</p>
-                        </li>
-                     </ul>
-                  
-                 </div>
-                </div>
-            </div>
-            <div class="flex-col-item">
-                <div class="box-card">
-                 <div class="box">
-                    <div class="box-image">
-                        <img class="responsive" src="../../../assets/img/illustrations/transform.jpg" alt="transform-art" />
+                <div class="flex-col-item">
+                    <div class="box-card primary-bg">
+                     <div class="box">
+                         <h2 class="box-title light-text">How It Works</h2>
+                         <ul *ngFor="let works of howitWorks">
+                            <li>
+                                <span>{{works.title}}</span>: <p>{{works.content}}</p>
+                            </li>
+                         </ul>
+                      
+                     </div>
                     </div>
-                     <h2 class="box-title">Transforming Engagement
-                    </h2>
-                     <p>
-                        Imagine walking into your favorite coffee shop, and your cup of joe is already waiting for you. That’s the Spillwine experience—anticipating your needs before you express them. Our personalized content not only elevates user engagement but also fosters strong connections with our audience.
-                    </p>
-                 </div>
                 </div>
-            </div>  
-        </div>
+                <div class="flex-col-item">
+                    <div class="box-card">
+                     <div class="box">
+                        <div class="box-image">
+                            <img class="responsive" src="../../../assets/img/illustrations/transform.jpg" alt="transform-art" />
+                        </div>
+                         <h2 class="box-title">Transforming Engagement
+                        </h2>
+                         <p>
+                            Imagine walking into your favorite coffee shop, and your cup of joe is already waiting for you. That’s the Spillwine experience—anticipating your needs before you express them. Our personalized content not only elevates user engagement but also fosters strong connections with our audience.
+                        </p>
+                     </div>
+                    </div>
+                </div>  
+            </div>
+        </article>
     </section>
 </main>
 
