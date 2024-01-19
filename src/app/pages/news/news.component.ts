@@ -8,7 +8,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class NewsComponent {
 
-  url: string = 'https://mesearch.ai/';
+  url: string = 'https://mesearch.ai/spillwinepublishing';
   urlSafe: SafeResourceUrl | undefined;
 
   constructor(public sanitizer: DomSanitizer) {}
