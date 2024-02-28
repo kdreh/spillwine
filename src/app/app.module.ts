@@ -9,7 +9,6 @@ import { SiteModule } from './settings/site.module';
 import { pages } from './settings/app.components';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
-import { NewsComponent } from './pages/news/news.component';
 
 
 
@@ -18,7 +17,7 @@ const mainComponents = [AppComponent, NavigationComponent, pages, FooterComponen
 const siteMod =[BrowserModule,AppRoutingModule,BrowserAnimationsModule,MaterialModule,SiteModule]
 
 @NgModule({
-  declarations:[mainComponents, NewsComponent],
+  declarations:[mainComponents],
   imports: [siteMod],
   providers: [{provide:LocationStrategy, useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]

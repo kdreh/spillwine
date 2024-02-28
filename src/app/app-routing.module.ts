@@ -5,6 +5,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ConstructionComponent } from './pages/construction/construction.component';
 import { AboutComponent } from './pages/about/about.component';
 import { NewsComponent } from './pages/news/news.component';
+import { KnowledgeComponent } from './pages/knowledge/knowledge.component';
 
 const routes: Routes = [
   // {path:'', redirectTo: 'construction', pathMatch:'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'home', component:HomeComponent},
   {path:'about', component:AboutComponent},
   {path:'news', component:NewsComponent},
+  {path:'knowledge',component:KnowledgeComponent},
   {path: 'contact', component:ContactComponent}
 ];
 
