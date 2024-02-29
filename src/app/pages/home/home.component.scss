@@ -96,3 +96,8 @@
         flex-direction: column;
     }
 }
+.res {
+    @include devices(mobile){
+        @include image (300px, auto);
+    }
+}

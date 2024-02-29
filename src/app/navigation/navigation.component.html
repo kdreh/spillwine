@@ -1,13 +1,13 @@
- <mat-toolbar class="primary-bg shadow">
+ <mat-toolbar class="white shadow">
   <div fxShow="true" fxHide.gt-sm="true">
-    <button mat-icon-button (click)="sidenav.toggle()">
+    <button class="burger" mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
    <div class="nav-align">
 
     <a class="brand" routerLink="/home" >
-      <img class="logo" src="../../assets/img/2023-12-12 Spillwine Publications-07.png" alt="Spillwine"/>
+      <img class="logo" src="../../assets/img/spillwine-in-article.png" alt="Spillwine"/>
     </a>
     <span class="nav-spacer"></span>
     <div fxShow="true" fxHide.lt-md="true" *ngFor="let page of pageRoute">

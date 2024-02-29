@@ -4,27 +4,34 @@
 ::ng-deep .mat-toolbar {
   z-index: 999;
   position: fixed;
-
+  background-color: white;
+}
+.burger {
+  margin-left: -50px;
+ & mat-icon {
+  font-size: 30px;
+ }
 }
 
 .brand{
   & .logo {
-    @include image (150px, 130px)
+    @include image (300px, auto)
+  }
+  @include devices (mobile) {
+    margin-left: -100px;
   }
   & span {
     text-transform: uppercase;
     font-weight: 200;
     font-size: 1.2rem;
   }
-
 }
 
 
 .mat-toolbar{
-
-padding-left: 8%; 
-padding-right: 8%;
-;
+  padding-left: 8%; 
+  padding-right: 8%;
+  padding: 50px;
 }
 
 .nav-spacer {
@@ -57,9 +64,10 @@ button{
   width: 200px;
   height: 50px;
   font-weight:500;
-  border-radius: 200px !important;
+  // border-radius: 200px !important;
 }
 .active {
-  background-color: $dark;
+  background-color: $primary;
   transition: 1.2s;
+  color: white !important;
 }
