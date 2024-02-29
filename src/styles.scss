@@ -42,7 +42,9 @@ button {
   .scroll-bar::-webkit-scrollbar{
     display: none;
   }
-  .scroll-bar {
-    // -ms-overflow-style: none;
-    // scrollbar-width: none;
+  .iframe-scrollbar {
+    // display: none;
   }
+ iframe::-webkit-scrollbar {
+  overflow-y: hidden;
+ }

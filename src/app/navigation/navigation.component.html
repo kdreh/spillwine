@@ -11,7 +11,7 @@
     </a>
     <span class="nav-spacer"></span>
     <div fxShow="true" fxHide.lt-md="true" *ngFor="let page of pageRoute">
-      <button mat-button routerLink={{page.route}}>{{page.page}}</button>
+      <button class="nav-button" routerLinkActive="active" mat-button routerLink={{page.route}}>{{page.page}}</button>
     </div>
   </div>
   </mat-toolbar>
