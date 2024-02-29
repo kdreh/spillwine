@@ -64,5 +64,5 @@ button{
 .active {
   background-color: $primary;
   transition: 1.2s;
-  color: white !important;
+  color: $dark !important;
 }

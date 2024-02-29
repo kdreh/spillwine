@@ -48,10 +48,6 @@
     }
     .hero-cta {
         margin-top: 1rem;
-
-        & button {
-            letter-spacing: 0;
-        }
     }
     & .hero-image img{
         @include image (500px, auto);
