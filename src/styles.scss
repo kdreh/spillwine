@@ -48,3 +48,9 @@ button {
  iframe::-webkit-scrollbar {
   overflow-y: hidden;
  }
+ .nav-button {
+  width: 200px !important;
+  height: 50px !important;
+  font-weight:500 !important;
+  // border-radius: 200px !important;
+}

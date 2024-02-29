@@ -1,14 +1,24 @@
 
+/*
 $primary:#009F7A;
 $primaryOverlay : #009f7a0d;
 $secondary:#1D6A7E;
 $dark:#212529;
 $light:#f4f4f4;
 $white : #ffffff;
+*/
+
+$primary:#E8C60B;
+$primaryOverlay : #009f7a0d;
+$secondary:#A29BC2;
+$dark:#212529;
+$light:#f4f4f4;
+$white : #ffffff;
+
 
 .primary-bg {
     background-color: $primary !important;
-    color: $light !important;
+    color: $dark !important;
 }
 .primary-text {
     color: $primary;
@@ -29,6 +39,9 @@ $white : #ffffff;
 }
 .light-text {
     color: $light !important;
+}
+.dark-text {
+    color: $dark !important;
 }
 .white-bg {
     background-color: $white;
