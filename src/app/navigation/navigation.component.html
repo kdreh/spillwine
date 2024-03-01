@@ -21,7 +21,7 @@
     <mat-sidenav #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
       <div class="mt-100"></div>
       <div class="overflow" fxLayout="column" *ngFor="let page of pageRoute">
-        <button mat-button routerLink={{page.route}} (click)="sidenav.toggle()">{{page.page}}</button>
+        <button routerLinkActive="active" mat-button routerLink={{page.route}} (click)="sidenav.toggle()">{{page.page}}</button>
       </div>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
