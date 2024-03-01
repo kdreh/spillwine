@@ -3,7 +3,7 @@ export const pageRoute = [
     // {page:'About', route:'/about'},
     
     /*TODO if Martha or Art wants to display the news again remove this comment */
-    // {page:'News',route:'/news'}, 
+    {page:'News',route:'/news'}, 
    
     {page:'Knowledge Market',route:'/knowledge'},
 

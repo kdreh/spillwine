@@ -18,7 +18,8 @@
     @include image (300px, auto)
   }
   @include devices (mobile) {
-    margin-left: -100px;
+    // calculate the margin based on mobile avg screensize
+    margin-left: calc(375px - 500px);
   }
   & span {
     text-transform: uppercase;
@@ -37,10 +38,16 @@
 .nav-spacer {
   flex: 1 1 auto;
 }
+
 .nav-align {
   display: flex;
   align-items: center;
   width: 100%;
+  @include devices(mobile){
+    display: flex;
+    padding-top: 17px;
+    align-items: normal;
+  }
 }
 
 mat-sidenav {
@@ -53,7 +60,10 @@ mat-sidenav {
 
  }
 }
-
+mat-sidenav-content {
+  background-color: $white;
+  overflow-y: hidden;
+}
 
 button{
 

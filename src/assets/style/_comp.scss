@@ -62,7 +62,10 @@ $shadow:  0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0, 0, 0, 0.099);
 
 .mt-100 {
 
- padding-top: $_100px;
+ margin-top: $_100px;
+}
+.mt-50 {
+  margin-top: $_50px;
 }
 
 .shadow {

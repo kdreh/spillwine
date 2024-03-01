@@ -1,27 +1,32 @@
  <mat-toolbar class="white shadow">
-  <div fxShow="true" fxHide.gt-sm="true">
-    <button class="burger" mat-icon-button (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
-   <div class="nav-align">
+  <div class="nav-align"><!--TODO removed style nav-align-->
+  
+      <a class="brand" routerLink="/home" >
+        <img class="logo" src="../../assets/img/spillwine-in-article.png" alt="Spillwine"/>
+      </a>
+      <span class="nav-spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true" *ngFor="let page of pageRoute">
+        <button class="nav-button" routerLinkActive="active" mat-button routerLink={{page.route}}>{{page.page}}</button>
+      </div>
 
-    <a class="brand" routerLink="/home" >
-      <img class="logo" src="../../assets/img/spillwine-in-article.png" alt="Spillwine"/>
-    </a>
-    <span class="nav-spacer"></span>
-    <div fxShow="true" fxHide.lt-md="true" *ngFor="let page of pageRoute">
-      <button class="nav-button" routerLinkActive="active" mat-button routerLink={{page.route}}>{{page.page}}</button>
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button class="burger" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
     </div>
   </div>
+ 
+
+
   </mat-toolbar>
 
   <mat-sidenav-container fxFlexFill class="sidenav-container">
   
     <mat-sidenav #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
       <div class="mt-100"></div>
-      <div class="overflow" fxLayout="column" *ngFor="let page of pageRoute">
+      <div  class="overflow pt-1" fxLayout="column" *ngFor="let page of pageRoute">
         <button routerLinkActive="active" mat-button routerLink={{page.route}} (click)="sidenav.toggle()">{{page.page}}</button>
+
       </div>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
