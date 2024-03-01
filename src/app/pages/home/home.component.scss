@@ -94,13 +94,13 @@
             }
         }
     }
-
 }
 
 .responsive {
     @include image(155px !important, auto)
 }
 .cta {
+    background-color: $secondary;
     min-height: 548px;
      h1 {
         font-weight: 600 !important;
