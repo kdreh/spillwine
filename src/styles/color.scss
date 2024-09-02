@@ -1,0 +1,102 @@
+/** Logo colors **/
+$logo-purple: #3f51b5 !default;
+$logo-blue: #21aae1 !default;
+$logo-green: #18a89e !default;
+
+/** Logo secondary **/
+$logo-blue-secondary: #147398;
+/** Neutral colors **/
+$light-gray: #f4f6fa;
+$neutral-gray: #d7d6d6;
+$dark-gray: #888888;
+$white: #fff;
+
+/** shadow **/
+$shadow: 10px 10px 20px rgba(0, 0, 0, 0.2) !important;
+
+/** alerts  light colors**/
+$primary-bg: #d0e1ff;
+$secondary-bg: #e1e3e5;
+$success-bg: #d0e7de;
+$danger-bg: #f7d7d8;
+$warning-bg: #fff2cc;
+$info-bg: #cff4fc;
+$light-bg: #fcfcfc;
+$dark-bg: #cdd4d9;
+
+$logo-purple-light: #5066e1;
+
+/** dark colors **/
+$primary: #021733;
+$secondary: #151819;
+$success: #089855;
+$danger: #ee1d2e;
+$warning: #332602;
+$info: #03272f;
+$light: #333a3f;
+$dark: #1b1d21;
+
+/** transparency **/
+$primary-opaque: #1c283c;
+
+/** styles for background **/
+.app-primary-gradient {
+  background-size: cover; /* Cover the entire viewport */
+  /* Make the background fixed */
+  background: linear-gradient(to bottom, $logo-blue, $logo-purple) fixed;
+}
+
+.btn-danger {
+  background-color: $danger-bg;
+  color: $danger;
+}
+
+
+.btn-primary {
+  background-color: $logo-purple !important;
+  color: $white;
+  outline: none;
+  border: none;
+}
+
+
+.btn-outline-primary:hover {
+  background-color: $logo-purple;
+  color: $white;
+}
+
+.btn-outline-primary {
+  border-color: $logo-purple;
+  color: $logo-purple;
+}
+
+.btn-success {
+  background-color: $logo-green;
+  color: $white;
+}
+
+.btn-outline-success:hover {
+  background-color: $logo-green;
+  color: $white;
+}
+
+.btn-outline-success {
+  border-color: $logo-green;
+  color: $logo-green;
+}
+.logo-purple {
+  background-color: $logo-purple;
+  color: $white;
+}
+.logo-blue {
+  background-color: $logo-blue;
+  color: $white;
+}
+.logo-green {
+  background-color: $logo-green;
+  color: $white;
+}
+.logo-light{
+  background-color: $dark-gray;
+  color: $white;
+}

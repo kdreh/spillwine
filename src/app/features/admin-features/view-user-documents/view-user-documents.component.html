@@ -1,0 +1,47 @@
+@defer {
+  <ng-container  *ngIf="documents.length > 0; else noDocuments">
+    <app-back [name]="'Go Back'"></app-back>
+    <app-title [title]="'All User Uploaded Documents '"></app-title>
+    <div class="table-responsive w-50">
+      <table class="table shadow">
+        <thead>
+        <tr>
+          <th>Filename</th>
+          <th>Uploaded By</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let document of documents; trackBy: trackByDocument">
+          <ng-container *ngIf="document.role !== 'admin'|| document.role !== 'admin' && !isAdmin">
+            <tr>
+              <td>{{ getCleanFileName(document.blobName) }}</td>
+              <td>{{document.firstName}} {{document.lastName}}</td>
+              <td>
+                <a mat-button [href]="document.url" download="{{ getCleanFileName(document.blobName) }}">
+                  <mat-icon>download</mat-icon> Download
+                </a>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+
+  <ng-template #noDocuments>
+    <div class="page-center-75">
+      <no-data [title]="'No documents found for this user'"></no-data>
+      <button class="m-3" mat-fab extended (click)="fileInput.click()">
+        <mat-icon>upload</mat-icon> Document
+      </button>
+      <app-upload #uploadComponent="appUpload"></app-upload>
+      <input type="file" #fileInput style="display: none;" (change)="uploadComponent.onFileSelected($event)" accept=".pdf">
+    </div>
+  </ng-template>
+}
+
+@placeholder(minimum 1000ms) {
+  <app-splash-screen></app-splash-screen>
+}

@@ -1,0 +1,17 @@
+.copy-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: -30px; /* Adjust this value as needed */
+}
+
+.copy-button mat-icon {
+  font-size: 20px; /* Adjust the size as needed */
+}
+
+.access-code {
+  min-width: 25em
+}

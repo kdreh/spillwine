@@ -1,0 +1,10 @@
+@import '../../../../styles/color';
+.mat-icon-brand{
+  margin-right: 1em;
+  color: $logo-blue
+}
+
+.card {
+  border-right: solid 0.33em $logo-blue!important;
+  //min-width: 20em !important;
+}

@@ -1,0 +1,226 @@
+
+<section class="full-width container-fluid py-5">
+  <h2>Let's learn about your customers and marketing</h2>
+  <form [formGroup]="marketForm" (ngSubmit)="onSubmit()" novalidate>
+    <h2>Marketing & Sales Strategies
+      <mat-icon class="matTooltip" matSuffix matTooltip="Marketing Strategies are how potential customers may find out about your business.">info</mat-icon>
+    </h2>
+    <article id="marketingStrategies">
+      <p>These may be marketing strategies to get the word out about your business. Out of these,
+        which are you already doing well?</p>
+      <mat-form-field class="full-width">
+        <mat-label>Please select and Option(s)</mat-label>
+        <mat-select
+          *ngIf="!isNoneM1"
+          placeholder=""
+          formControlName="marketingStrategiesOvercome"
+          multiple>
+          <mat-option
+            *ngFor="let markStrat of marketingStrategiesOvercomeFull"
+            [value]="markStrat"
+          >
+            {{ markStrat.name }}
+          </mat-option>
+          <mat-option
+            (click)="isNoneSelected(5)"
+            *ngFor="let markStrat of marketingStrategiesOvercomeNoneAbove"
+            [value]="markStrat"
+          >
+            {{ markStrat.name }}
+          </mat-option>
+        </mat-select>
+        <mat-select
+          *ngIf="isNoneM1"
+          placeholder=""
+          formControlName="marketingStrategiesOvercome"
+          multiple
+        >
+          <mat-option
+            (click)="isNoneSelected(5)"
+            *ngFor="let markStrat of marketingStrategiesOvercomeNoneAbove"
+            [value]="markStrat"
+          >
+            {{ markStrat.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </article>
+    <article id="salesStrategies">
+      <p>These may be sales strategies to help sell your product or service. Out of these,
+        which are you already doing well?</p>
+      <mat-form-field class="full-width">
+        <mat-label>Please select and Option(s)</mat-label>
+        <mat-select
+          *ngIf="!isNoneM2"
+          placeholder=""
+          formControlName="salesStrategiesOvercome"
+          multiple>
+          <mat-option
+            *ngFor="let salStrat of salesStrategiesOvercomeFull"
+            [value]="salStrat"
+          >
+            {{ salStrat.name }}
+          </mat-option>
+          <mat-option
+            (click)="isNoneSelected(6)"
+            *ngFor="let salStrat of salesStrategiesOvercomeNoneAbove"
+            [value]="salStrat"
+          >
+            {{ salStrat.name }}
+          </mat-option>
+        </mat-select>
+        <mat-select
+          *ngIf="isNoneM2"
+          placeholder=""
+          formControlName="salesStrategiesOvercome"
+          multiple
+        >
+          <mat-option
+            (click)="isNoneSelected(6)"
+            *ngFor="let salStrat of salesStrategiesOvercomeNoneAbove"
+            [value]="salStrat"
+          >
+            {{ salStrat.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </article>
+
+
+    <p>How comfortable are you in your marketing efforts and understanding how effective they are?</p>
+    <mat-form-field class="form-full-width">
+      <mat-label>Please Select an Option(s)</mat-label>
+      <mat-select placeholder=" " formControlName="marketingEffectiveness">
+        <mat-option *ngFor="let mEffectiveness of marketingEffectiveness" [value]="mEffectiveness">
+          {{ mEffectiveness.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="marketForm.controls['marketingEffectiveness'].hasError('required')">
+        Please select yes or no
+      </mat-error>
+    </mat-form-field>
+
+    <h2>Marketing Tools
+      <mat-icon class="matTooltip" matSuffix matTooltip="Marketing tools are things that you can use to tell people about your business.">info</mat-icon>
+    </h2>
+    <article id="tools">
+      <p>Tell us about your website</p>
+      <mat-form-field class="form-full-width">
+        <mat-label>Please Select an Option(s)</mat-label>
+        <mat-select placeholder=" " formControlName="marketingWebsite">
+          <mat-option *ngFor="let mWebsite of marketingWebsite" [value]="mWebsite">
+            {{mWebsite.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="marketForm.controls['marketingWebsite'].hasError('required')">
+          Please select one
+        </mat-error>
+      </mat-form-field>
+
+      <p>Tell us about your website domain and email (Ex. of Professional Domain: www.yourbusiness.com | Ex. of Email Use: hello&#64;yourbusiness.com) </p>
+      <mat-form-field class="form-full-width">
+        <mat-label>Please Select an Option</mat-label>
+        <mat-select placeholder=" " formControlName="marketingDomainEmail">
+          <mat-option *ngFor="let mDomainEmail of marketingDomainEmail" [value]="mDomainEmail">
+            {{mDomainEmail.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="marketForm.controls['marketingDomainEmail'].hasError('required')">
+          Please select one
+        </mat-error>
+      </mat-form-field>
+
+
+      <p>Which best describes your social media presence?</p>
+      <mat-form-field class="form-full-width">
+        <mat-label>Please Select an Option(s)</mat-label>
+        <mat-select placeholder=" " formControlName="marketingSocialMedia">
+          <mat-option *ngFor="let mSocialMedia of marketingSocialMedia" [value]="mSocialMedia">
+            {{ mSocialMedia.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="marketForm.controls['marketingSocialMedia'].hasError('required')">
+          Please select yes or no
+        </mat-error>
+      </mat-form-field>
+
+      <p>Do you have material to showcase your business when networking? (Ex. Capabilities statement, business cards, etc.)</p>
+      <mat-form-field class="form-full-width">
+        <mat-label>Please Select an Option(s)</mat-label>
+        <mat-select placeholder=" " formControlName="marketingNetworkMaterial">
+          <mat-option *ngFor="let mNetworkMaterial of marketingNetworkMaterial" [value]="mNetworkMaterial">
+            {{ mNetworkMaterial.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="marketForm.controls['marketingNetworkMaterial'].hasError('required')">
+          Please select yes or no
+        </mat-error>
+      </mat-form-field>
+      <p>How consistent and professional is your brand?</p>
+      <mat-form-field class="form-full-width">
+        <mat-label>Please Select an Option(s)</mat-label>
+        <mat-select placeholder=" " formControlName="marketingBrand">
+          <mat-option *ngFor="let mBrand of marketingBrand" [value]="mBrand">
+            {{ mBrand.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="marketForm.controls['marketingBrand'].hasError('required')">
+          Please select yes or no
+        </mat-error>
+      </mat-form-field>
+    </article>
+
+    <h2>How are your customer relationships?
+      <mat-icon class="matTooltip" matSuffix matTooltip="Maintaining and monitoring for healthy customer relationships is important">info</mat-icon>
+    </h2>
+    <article id="custEngage" #CustomerEngagement style="display:none">
+      <p> How is your customer engagement?</p>
+      <mat-form-field class="form-full-width">
+        <mat-label>Please Select an Option(s)</mat-label>
+        <mat-select placeholder="" formControlName="customerEngagement">
+          <mat-option  *ngFor="let cEngagement of customerEngagement" [value]="cEngagement">
+            {{cEngagement.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="marketForm.controls['customerEngagement'].hasError('required')">
+          Please select one
+        </mat-error>
+      </mat-form-field>
+    </article>
+    <article id="customerServ" #CustomerService style="display:none">
+      <p> How would others describe your customer service?</p>
+      <mat-form-field class="form-full-width">
+        <mat-label>Please Select an Option(s)</mat-label>
+        <mat-select placeholder="" formControlName="customerService">
+          <mat-option  *ngFor="let cService of customerService" [value]="cService">
+            {{cService.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="marketForm.controls['customerService'].hasError('required')">
+          Please select one
+        </mat-error>
+      </mat-form-field>
+    </article>
+    <article id="customerFeedback">
+      <p> Do you collect customer feedback or reviews?</p>
+      <mat-form-field class="form-full-width">
+        <mat-label>Please Select an Option</mat-label>
+        <mat-select placeholder="" formControlName="customerFeedback">
+          <mat-option  *ngFor="let cFeedback of customerFeedback" [value]="cFeedback">
+            {{cFeedback.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="marketForm.controls['customerFeedback'].hasError('required')">
+          Please select one
+        </mat-error>
+      </mat-form-field>
+    </article>
+
+    <div class="pt-3"></div>
+    <div class="pt-3" *ngIf="!marketForm.valid">
+      <label>Please tell me all fields before submitting, it helps me help you better.</label><br/><br/>
+    </div>
+    <button class="mat-focus-indicator bg-blue mat-button mat-button-base" mat-button-raised color="primary" [disabled]="!marketForm.valid">Submit</button>
+  </form>
+</section>
+<!--<app-countdown  *ngIf="submitted" [showSplash]="this.showSplash" [textToShow]="this.textToShow" [counter]="time"></app-countdown>-->

@@ -1,0 +1,96 @@
+<!-- Todo Form -->
+<!-- Todo Form Card -->
+<!-- Todo Form -->
+<section class="container-fluid">
+<app-back [name]="'Go Back'"></app-back>
+<app-title [title]="'Action Plan'"></app-title>
+@defer{
+
+<!-- Todo List with Headers and Filters -->
+<div *ngIf="todos.data.length === 0" class="no-todos page-center-75">
+  <no-data [title]="'No Todos found, please add'"></no-data>
+</div>
+
+<div *ngIf="todos.data.length > 0" class="todo-list-container ">
+  <div class="filter-container">
+    <mat-form-field appearance="outline" class="filter-item">
+      <mat-label>Filter by Category</mat-label>
+      <mat-select (selectionChange)="applyCategoryFilter($event.value)">
+        <mat-option value="">All Categories</mat-option>
+        <mat-option *ngFor="let cat of category" [value]="cat">{{ cat }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filter-item">
+      <mat-label>Filter by Status</mat-label>
+      <mat-select (selectionChange)="applyStatusFilter($event.value)">
+        <mat-option value="">All Statuses</mat-option>
+        <mat-option *ngFor="let status of status" [value]="status">{{ status }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+
+  <table mat-table [dataSource]="todos" class="">
+    <!-- Columns definition remains the same -->
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>
+        Todo Name
+<!--        <input matInput placeholder="Filter" (keyup)="applyFilter($event, 'title')" class="filter-input">-->
+      </th>
+      <td mat-cell *matCellDef="let todo">{{ todo.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>
+        Todo Category
+      </th>
+      <td mat-cell *matCellDef="let todo">{{ todo.category }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dueDate">
+      <th mat-header-cell *matHeaderCellDef>
+        Todo Due Date
+      </th>
+      <td mat-cell *matCellDef="let todo">{{ todo.dueDate | date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>
+        Todo Status
+      </th>
+      <td mat-cell *matCellDef="let todo">{{ todo.status }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="assignedBy">
+      <th mat-header-cell *matHeaderCellDef>
+        Todo Assigned By
+      </th>
+      <td mat-cell *matCellDef="let todo">{{ todo.assignedBy }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let todo">
+<!--        <mat-checkbox (change)="toggleComplete(todo)" [checked]="todo.completed"></mat-checkbox>-->
+        <button mat-icon-button (click)="editTodo(todo)" aria-label="Edit Todo">
+          <mat-icon class="text-dark">edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="confirmDelete(todo)" aria-label="Delete Todo">
+          <mat-icon class="text-danger">delete</mat-icon>
+        </button>
+
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+} @placeholder (minimum 2000ms){
+<app-splash-screen></app-splash-screen>
+}
+</section>
+
+

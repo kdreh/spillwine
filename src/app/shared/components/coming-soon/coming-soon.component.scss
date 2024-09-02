@@ -1,0 +1,18 @@
+.coming-soon-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+}
+
+.coming-soon-title {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.coming-soon-text {
+  font-size: 1.2em;
+  color: #666;
+}

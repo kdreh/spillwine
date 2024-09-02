@@ -1,0 +1,94 @@
+<section class="container-fluid my-3" *ngIf="!isAdmin">
+  <div class="d-flex justify-content-between align-items-center flex-wrap">
+    <div class="w-25 d-flex align-items-center justify-content-between">
+      <h2 class="title">User Dashboard</h2>
+
+    </div>
+
+
+    <div class="d-flex flex-wrap">
+
+      <!-- Button 1: Business Plan -->
+      <button mat-fab extended routerLink="/app/business-plan" disabled class="me-3 mb-2">
+        <mat-icon>assignment_turned_in</mat-icon>
+        Business Plan
+      </button>
+
+      <!-- Button 2: Action Plan -->
+      <button mat-fab extended routerLink="/app/action-plan" class="me-3 mb-2">
+        <mat-icon>checklist</mat-icon>
+        Action Plan
+      </button>
+
+      <!-- Button 3: Document Upload -->
+      <button mat-fab extended (click)="fileInput.click()" class="me-3 mb-2">
+        <mat-icon>upload</mat-icon> Document
+      </button>
+      <app-upload #uploadComponent="appUpload"></app-upload>
+      <input type="file" #fileInput style="display: none;" (change)="uploadComponent.onFileSelected($event)" accept=".pdf,.doc,.docx,.txt">
+
+      <!-- Button 4: Access Code -->
+      <button mat-fab extended (click)="openAccessCode()" class="mb-2">
+        <mat-icon>add</mat-icon>
+        Access Code
+      </button>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="container-fluid" *ngIf="isAdmin">
+  <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+    <h2 class="title">Admin Dashboard</h2>
+
+    <div class="d-flex flex-wrap">
+
+      @defer {
+        <div *ngIf="!accessCode" class="me-3 mb-3">
+          <button mat-fab extended (click)="generateCode()">
+            <mat-icon>key</mat-icon>
+            Generate Access Code
+          </button>
+        </div>
+        <div *ngIf="accessCode" class="me-3 mb-3">
+          <button mat-fab extended (click)="removeAccessCode()">
+            <mat-icon>delete</mat-icon>
+            Delete Access Code
+          </button>
+        </div>
+      } @placeholder (minimum 1000ms) {
+        <button mat-fab extended class="me-3 mb-3">
+          <app-loading></app-loading>
+        </button>
+      }
+
+      <!-- Document Upload Button -->
+      <button mat-fab extended (click)="fileInput.click()" class="me-3 mb-3">
+        <mat-icon>upload</mat-icon> Document
+      </button>
+      <app-upload #uploadComponent="appUpload"></app-upload>
+      <input type="file" #fileInput style="display: none;" (change)="uploadComponent.onFileSelected($event)" accept=".pdf,.doc,.docx,.txt">
+    </div>
+  </div>
+
+  <!-- Access Code Display Section -->
+  <div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
+      <div class="d-flex align-items-center access-code mb-3 w-100">
+        <mat-form-field appearance="outline" class="w-25" *ngIf="accessCode" >
+          <mat-label>Access Code</mat-label>
+          <input matInput [value]="accessCode" readonly #accessCodeInput placeholder="Access Code"(click)="copyToClipboard(accessCodeInput.value)" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-25" *ngIf="!accessCode">
+          <mat-label>Access Code</mat-label>
+          <input matInput [value]="accessCode" readonly #accessCodeInput placeholder="Access Code"  />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+

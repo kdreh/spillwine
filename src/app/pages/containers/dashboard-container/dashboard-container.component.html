@@ -1,0 +1,18 @@
+@if(isAdmin){
+  @defer  {
+      <app-admin-dashboard></app-admin-dashboard>
+  } @placeholder(minimum 3000ms) {
+    <app-splash-screen></app-splash-screen>
+  }
+
+}
+@if(!isAdmin){
+  @defer  {
+  <app-user-dashboard></app-user-dashboard>
+} @placeholder(minimum 3000ms) {
+  <app-splash-screen></app-splash-screen>
+}
+
+}
+
+

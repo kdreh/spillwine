@@ -1,0 +1,90 @@
+@defer {
+  <app-back [name]="'Go Back'"></app-back>
+  <section class="container-fluid ">
+    <div class="w-50 mt-4" style="margin-left: 0;">
+      <app-title [title]="'Set New Goal'"></app-title>
+
+      <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+
+        <!-- Goal Title -->
+        <mat-form-field appearance="outline" class="full-width mb-4">
+          <mat-label>Goal Title</mat-label>
+          <input matInput formControlName="title" placeholder="Enter the goal title">
+        </mat-form-field>
+
+        <!-- Category -->
+        <mat-form-field appearance="outline" class="full-width mb-4">
+          <mat-label>Goal Category</mat-label>
+          <mat-select formControlName="category" placeholder="Select a category">
+            <mat-option *ngFor="let area of category" [value]="area">{{ area }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Measured By -->
+        <mat-form-field appearance="outline" class="full-width mb-4">
+          <mat-label>How is this goal measured?</mat-label>
+          <mat-select formControlName="measuredBy" (selectionChange)="onMeasuredByChange($event.value)">
+            <mat-option *ngFor="let option of measuredByOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Target Value -->
+        <mat-form-field *ngIf="todoForm.get('measuredBy')?.value === 'Numerical'" appearance="outline" class="full-width mb-4">
+          <mat-label>Target Value</mat-label>
+          <input matInput formControlName="targetValue" placeholder="Enter target value" type="number">
+        </mat-form-field>
+
+        <mat-form-field *ngIf="todoForm.get('measuredBy')?.value !== 'Numerical'" appearance="outline" class="full-width mb-4">
+          <mat-label>Target Value</mat-label>
+          <mat-select formControlName="targetValue">
+            <mat-option *ngFor="let option of targetValueOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Current Value -->
+        <mat-form-field *ngIf="todoForm.get('measuredBy')?.value === 'Numerical'" appearance="outline" class="full-width mb-4">
+          <mat-label>Current Value</mat-label>
+          <input matInput formControlName="currentValue" placeholder="Enter current value" type="number">
+        </mat-form-field>
+
+        <mat-form-field *ngIf="todoForm.get('measuredBy')?.value !== 'Numerical'" appearance="outline" class="full-width mb-4">
+          <mat-label>Current Value</mat-label>
+          <mat-select formControlName="currentValue">
+            <mat-option *ngFor="let option of targetValueOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Target Label -->
+        <mat-form-field appearance="outline" class="full-width mb-4">
+          <mat-label>Measurement Label</mat-label>
+          <input matInput formControlName="targetLabel" placeholder="What are you measuring? (e.g., Sales, Leads)">
+        </mat-form-field>
+
+        <!-- Entrepreneurs Selection -->
+        <div class="select-container mb-4">
+          <mat-checkbox
+            [checked]="isAllSelected()"
+            [indeterminate]="isSomeSelected()"
+            (change)="toggleAllSelection($event.checked)">
+            Select All Entrepreneurs
+          </mat-checkbox>
+
+          <mat-form-field appearance="outline" class="full-width mt-2">
+            <mat-label>Select Entrepreneurs</mat-label>
+            <mat-select [formControl]="entrepreneursControl" multiple placeholder="Choose entrepreneurs">
+              <mat-option *ngFor="let entrepreneur of entrepreneurs" [value]="entrepreneur.id">
+                {{ entrepreneur.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Submit Button -->
+        <button mat-flat-button color="primary" type="submit" [disabled]="todoForm.invalid">Create Goal</button>
+
+      </form>
+    </div>
+  </section>
+} @placeholder (minimum 2000ms) {
+  <app-splash-screen></app-splash-screen>
+}

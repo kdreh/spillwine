@@ -1,0 +1,35 @@
+<ng-container *ngIf="!isAdmin">
+  @defer {
+  <ng-container *ngIf="!accessCode; else accessCodeBlock">
+    <h2 mat-dialog-title>Enter the Access Code</h2>
+    <form [formGroup]="adminCodeForm" (ngSubmit)="submitAdminCode()">
+      <mat-dialog-content>
+        <input class="form-control" id="adminCode" type="text" formControlName="adminCode" required>
+        <div *ngIf="adminCodeForm.controls['adminCode'].invalid && (adminCodeForm.controls['adminCode'].dirty || adminCodeForm.controls['adminCode'].touched)">
+          <span style="color:red;">Admin Code is required</span>
+        </div>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-dialog-close mat-button>No Thanks</button>
+        <button type="submit" mat-flat-button [disabled]="adminCodeForm?.invalid">Add</button>
+      </mat-dialog-actions>
+    </form>
+  </ng-container>
+
+  <ng-template #accessCodeBlock>
+    <h2 mat-dialog-title>Current Access Code</h2>
+    <mat-dialog-content>
+      {{ accessCode }}
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-dialog-close mat-button>No Thanks</button>
+      <button (click)="removeAccessCode()" mat-flat-button>Remove</button>
+    </mat-dialog-actions>
+  </ng-template>
+  }
+  @placeholder (minimum  2000ms){
+    <mat-dialog-content>
+    <app-loading></app-loading>
+    </mat-dialog-content>
+  }
+</ng-container>

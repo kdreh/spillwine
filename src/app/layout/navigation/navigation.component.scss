@@ -1,0 +1,156 @@
+@import "../../../styles/color";
+@import "../../../styles/components";
+
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 206px;
+  border-radius: 0;
+  padding-left: 0.75em;
+  background-color: $logo-purple;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+
+.active {
+  background-color: $logo-purple-light !important;
+  opacity: 50;
+  box-shadow: $shadow;
+  border-right: 0.3em solid $logo-green;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.active-sub {
+  background-color: $logo-purple-light !important;
+  color: $white !important;
+}
+
+.link {
+  font-weight: 300;
+  color: $white !important;
+  margin-bottom: 0.4em;
+  width: 193px;
+  height: 50px;
+}
+
+.link:hover {
+  background-color: $logo-purple-light !important;
+  transition: 1s;
+}
+
+.link i {
+  font-size: 1.3em;
+  margin: 0.4em;
+}
+
+.profile-pic {
+
+  .user-name {
+    font-size: 0.75em;
+    margin: 0.3em;
+  }
+
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+
+  .account-dropdown {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown-menu {
+    border: none !important;
+    padding: 0.5em;
+  }
+
+  .dropdown-menu button {
+    margin-top: 10px;
+    border-color: $danger;
+    color: $danger;
+  }
+
+  .dropdown-menu li {
+    margin-top: 15px;
+  }
+
+  .dropdown-menu button:hover {
+    background: transparent !important;
+  }
+}
+
+.position-relative {
+  border: none;
+  background-color: transparent;
+}
+
+.active-sub-link {
+  color: white; /* Optional: Change text color for contrast */
+}
+
+.dropdown-item:hover {
+  background-color: $logo-purple;
+  color: $white !important;
+  transition: 0.5s;
+
+}
+
+.logout:hover {
+  background-color: red !important;
+  color: $white !important;
+  transition: 0.5s;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.icon-container {
+  display: flex;
+}
+
+.chat-box{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidenav-container {
+  height: 100%;
+}
+
+.chat-sidenav {
+  width: 700px; /* Adjust the width as needed */
+}
+.chat-sidenav {
+  width: 350px; /* Set the width of the side nav */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition effect */
+
+  // Initally keep it hidden
+  transform: translateX(100%);
+  opacity: 0;
+
+  &.mat-drawer-opened {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

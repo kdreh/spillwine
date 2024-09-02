@@ -1,0 +1,78 @@
+/* chat-dialog.component.scss */
+.chat-container {
+  height: calc(100vh - 16px); /* Adjust height to include a bit of margin */
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Ensure proper layout */
+}
+
+.chat-header {
+  position: sticky; /* Make the header stick to the top */
+  top: 0;
+  z-index: 100; /* Ensure it stays above other content */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #fff; /* Ensure header has a background color */
+  border-bottom: 1px solid #e0e0e0; /* Add border for separation */
+}
+
+.chat-window {
+  flex: 1;
+  overflow-y: auto; /* Make the chat window scrollable */
+  padding: 16px; /* Add padding for the messages window */
+  box-sizing: border-box;
+  margin-bottom: 64px; /* Ensure space for the fixed input form */
+}
+
+/* Ensure no horizontal scrolling in messages */
+.chat-window .message-content {
+  word-wrap: break-word; /* Break words to prevent overflow */
+  overflow-wrap: break-word; /* Ensures long words are broken */
+  white-space: pre-wrap; /* Keeps formatting but allows wrapping */
+}
+
+.chat-input-form {
+  position: fixed; /* Make the input form fixed at the bottom */
+  bottom: 0;
+  width: 100%; /* Full width of the screen */
+  z-index: 100; /* Ensure it stays above other content */
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: #fff; /* Ensure form has a solid background */
+  border-top: 1px solid #e0e0e0;
+  box-sizing: border-box;
+}
+
+.mat-form-field {
+  flex: 1;
+  margin-right: 8px;
+}
+
+.send-button {
+  margin-left: 8px;
+}
+
+.message {
+  margin-bottom: 1em;
+  box-sizing: border-box;
+}
+
+.user-message {
+  background-color: #e5e5ea;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.ai-message {
+  background-color: #007bff;
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.close-chat-button {
+  color: #ff0000; /* Change color as needed */
+}

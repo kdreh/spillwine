@@ -1,0 +1,128 @@
+<main class="app-primary-gradient">
+  <section class="container-fluid app-page-center">
+    <div class="card d-flex justify-content-center align-items-center">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 ">
+          <app-back [name]="'Back to Sign In'"></app-back>
+          <div class="logo my-3">
+            <img [alt]="altText" [src]="logo"/>
+            <h2 class="mx-2">{{ title }}</h2>
+          </div>
+          <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+            <mat-stepper class="stepper-without-header bg-white"   #stepper>
+              <!--Personal Information -->
+              <mat-step [stepControl]="personalInfoForm">
+
+                @for (fields of IMAGE_UPLOAD; track  fields){
+                  <label for="file-upload" class="custom-file-upload">
+                    <div class="d-flex align-content-center">
+                      <img [src]='imageSrc' alt="" />
+                      <!-- Display the file name -->
+                    </div>
+                    @if(profileImageName){
+                      <p class="text-muted">{{profileImageName}}</p>
+                    } @else {
+                      <span class="d-flex text-muted" >
+                          Profile Picture
+                        </span>
+                    }
+                  </label>
+                  <input id="file-upload"  style="display: none" class="form-control" [type]="fields.type" (change)="imageUploadOnFileSelected($event)" [accept]="fields.accept" />
+                }
+                @for (fields of SIGN_UP_PERSONAL_FIELDS; track fields) {
+                  <input class="input form-control my-3" [type]="fields.type" [placeholder]="fields.placeholder" [formControlName]="fields.name"/>
+                  @if (signUpForm.get(fields.name)?.invalid && signUpForm.get(fields.name)?.touched) {
+                    <app-alerts [alertType]="'text-danger'" [alert]="fields.errorMessage"></app-alerts>
+                  }
+                }
+                <button [disabled]="signUpForm.get('firstName')?.invalid || signUpForm.get('lastName')?.invalid" mat-flat-button matStepperNext>Next</button>
+              </mat-step>
+              <!-- Address Information -->
+              <mat-step [stepControl]="addressInfoForm">
+                @for(fields of SIGN_UP_ADDRESS_FIELDS; track fields){
+                  @if(fields.name !=='state'){
+                    <input class="input form-control my-3" [type]="fields.type" [placeholder]="fields.placeholder" [formControlName]="fields.name"/>
+                    @if (signUpForm.get(fields.name)?.invalid && signUpForm.get(fields.name)?.touched) {
+                      <app-alerts [alertType]="'text-danger'" [alert]="fields.errorMessage"></app-alerts>
+                    }
+                  }
+                  @if(fields.name ==='state'){
+                    <div class="custom-select">
+                      <select class="form-select my-3" [formControlName]="fields.name">
+                        <option value="" disabled><span class="default-option">{{ fields.label }}</span></option>
+                        @for(us_states of US_STATES; track us_states){
+                          <option [value]="us_states">{{us_states}}</option>
+                        }
+                      </select>
+                      @if (signUpForm.get(fields.name)?.invalid  && signUpForm.get(fields.name)?.touched) {
+                        <app-alerts [alertType]="'text-danger'" [alert]="fields.errorMessage"></app-alerts>
+                      }
+                    </div>
+                  }
+                }
+                <button  mat-flat-button matStepperPrevious>Back</button>
+                <button [disabled]="signUpForm.get('address')?.invalid || signUpForm.get('city')?.invalid || signUpForm.get('state')?.invalid || signUpForm.get('zip')?.invalid" mat-flat-button matStepperNext>Next</button>
+              </mat-step>
+             <!--Contact Information -->
+              <mat-step [stepControl]="contactInfoForm">
+
+                @for(fields of CONTACT_FIELDS; track fields){
+                    <input class="input form-control my-3" [type]="fields.type" [placeholder]="fields.placeholder" [formControlName]="fields.name"/>
+                    @if (signUpForm.get(fields.name)?.invalid  && signUpForm.get(fields.name)?.touched) {
+                      <app-alerts [alertType]="'text-danger'" [alert]="fields.errorMessage"></app-alerts>
+                    }
+                  }
+                <button  mat-flat-button matStepperPrevious>Back</button>
+                <button [disabled]="signUpForm.get('email')?.invalid"  mat-flat-button matStepperNext>Next</button>
+              </mat-step>
+              <mat-step [stepControl]="passwordInfoForm">
+
+                @for(fields of PASSWORD_FIELDS; track fields){
+                  @if(fields.name !=='role'){
+                    <input class="form-control input" [type]="fields.type" [placeholder]="fields.placeholder"  [formControlName]="fields.name" required/>
+                    @if (signUpForm.get(fields.name)?.invalid  && signUpForm.get(fields.name)?.touched) {
+                      <app-alerts [alertType]="'text-danger'" [alert]="fields.errorMessage"></app-alerts>
+                    }
+                  }
+                  @if(fields.name ==='role'){
+                    <div class="custom-select">
+                      <select class="form-select my-3" [formControlName]="fields.name">
+                        <option value="" disabled><span class="default-option">{{ fields.label }}</span></option>
+                        @for(role of USER_TYPE; track role){
+                          <option [value]="role">{{role}}</option>
+                        }
+                      </select>
+                      @if (signUpForm.get(fields.name)?.invalid && signUpForm.get(fields.name)?.touched) {
+                        <app-alerts [alertType]="'text-danger'" [alert]="fields.errorMessage"></app-alerts>
+                      }
+                    </div>
+                  }
+                }
+                  <input type="checkbox" (change)="onCheckboxChange($event)" formControlName="acceptTerms" style="width: 10%"/>
+                    I accept the <a routerLink="/terms-of-use">Terms</a> | <a routerLink="/privacy-policy"> Privacy</a>
+                <div class="d-flex">
+                  <button  mat-flat-button matStepperPrevious>Back</button>
+
+                  <button  mat-flat-button [disabled]="isSubmitDisabled || signUpForm.invalid">
+                    @if(isLoading){
+                      Submit
+                    } @else if (!isLoading){
+                      <app-loading [loadingMessage]="'Submitting'" [title]="'Create Account'"></app-loading>
+                    }
+                  </button>
+                </div>
+
+              </mat-step>
+            </mat-stepper>
+          </form>
+
+
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 ">
+          <img [alt]=altText [src]=signInImage class="app-right-image" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>

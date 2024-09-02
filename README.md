@@ -1,6 +1,6 @@
-# Spillwine
+# Dashboard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.9.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
 
 ## Development server
 
@@ -24,4 +24,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+# Image Reference
+
+<a href="https://www.freepik.com/free-vector/lost-concept-illustration_7070463.htm#fromView=search&page=1&position=28&uuid=8f9a3679-6736-44cd-bf01-5abf5ac42620">Image by storyset on Freepik</a>

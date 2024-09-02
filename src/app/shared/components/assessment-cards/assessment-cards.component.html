@@ -1,0 +1,76 @@
+@if(strategyCards){
+  <ng-container #strategy>
+    <form [formGroup]="strategyForm">
+      <mat-vertical-stepper  #stepper [animationDuration]="duration">
+        <mat-step [stepControl]="strategyForm">
+          <ng-template matStepLabel>Do you have any of these things written down about your business?
+          </ng-template>
+          <div class="row">
+
+            @for(questions of busiPlanArray; track questions){
+              <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="card w-100  shadow p-4 my-3">
+                  <h6 class="">{{questions.name}}</h6>
+
+                  <div class="w-100">
+                    @for(fields of strategyRadBtn; track fields){
+                      <mat-radio-group class="d-flex" [name]="questions.name">
+                        <mat-radio-button [value]="fields.value">{{fields.name}}</mat-radio-button>
+                      </mat-radio-group>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+          <button [disabled]="strategyForm.invalid"  mat-flat-button matStepperNext>Next</button>
+        </mat-step>
+      <mat-step [stepControl]="strategyForm" >
+        <ng-template matStepLabel>These may be keys to success for your business, what's their status?</ng-template>
+        <div class="row">
+          @for(questions of keysToSuccess; track questions){
+            <div class="col-lg-3 col-md-3 col-sm-12">
+              <div class="card w-100  shadow p-4 my-3">
+                <h6 class="">{{questions.name}}</h6>
+
+                <div class="w-100">
+                  @for(fields of keysToSuccessRadBtn; track fields){
+                    <mat-radio-group class="d-flex" [name]="questions.name">
+                      <mat-radio-button [value]="fields.value">{{fields.name}}</mat-radio-button>
+                    </mat-radio-group>
+                  }
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+        <button [disabled]="strategyForm.invalid"  mat-flat-button matStepperNext>Next</button>
+      </mat-step>
+        <mat-step [stepControl]="strategyForm" >
+          <ng-template matStepLabel>How would you rate the below features for your business?</ng-template>
+          <div class="row">
+            @for(questions of offerFeatures; track questions){
+              <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="card w-100  shadow p-4 my-3">
+                  <h6 class="">{{questions.name}}</h6>
+
+                  <div class="w-100">
+                    @for(fields of offerFeaturesRadBtn; track fields){
+                      <mat-radio-group class="d-flex" [name]="questions.name">
+                        <mat-radio-button [value]="fields.value">{{fields.name}}</mat-radio-button>
+                      </mat-radio-group>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+          <button [disabled]="strategyForm.invalid"  mat-flat-button >Calculate Score</button>
+        </mat-step>
+    </mat-vertical-stepper>
+
+
+    </form>
+  </ng-container>
+
+}

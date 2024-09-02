@@ -1,0 +1,141 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- Existing Sidenav for Navigation -->
+  <mat-sidenav #drawer
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false"
+               class="sidenav"
+               fixedInViewport>
+    <mat-toolbar class="text-white">
+      <span style="margin-right:1em;">Dashboard</span>
+      @if(isHandset$ | async){
+        <button mat-icon-button class="btn-info text-white shadow" type="button" aria-label="Toggle sidenav" (click)="drawer.close()">
+          <mat-icon>close</mat-icon>
+        </button>
+      }
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+      </button>
+    </mat-toolbar>
+    @for (pages of APP_ROUTES; track pages) {
+      <mat-nav-list>
+        <button class="link btn btn-primary d-flex align-items-center justify-content-around" routerLinkActive="active"
+                [routerLink]="pages.link">
+          <span class="icon-container">
+            <mat-icon class="material-symbols-outlined">{{ pages.icon }}</mat-icon>
+          </span>
+          {{ pages.name }}
+        </button>
+      </mat-nav-list>
+    }
+    @if (isAdmin) {
+      @for (pages of ADMIN_ROUTES; track pages) {
+        <mat-nav-list>
+          <button class="link btn btn-primary d-flex align-items-center justify-content-around"
+                  routerLinkActive="active" [routerLink]="pages.link">
+            <span class="icon-container">
+              <mat-icon class="material-symbols-outlined">{{ pages.icon }}</mat-icon>
+            </span>
+            {{ pages.name }}
+          </button>
+        </mat-nav-list>
+      }
+    }@else {
+      @for (pages of USER_ROUTES; track pages) {
+        <mat-nav-list>
+          <button class="link btn btn-primary d-flex align-items-center justify-content-around"
+                  routerLinkActive="active" [routerLink]="pages.link">
+            <span class="icon-container">
+              <mat-icon class="material-symbols-outlined">{{ pages.icon }}</mat-icon>
+            </span>
+            {{ pages.name }}
+          </button>
+        </mat-nav-list>
+      }
+    }
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content>
+    <mat-toolbar class="shadow d-flex align-items-center fixed-top">
+      @if (isHandset$ | async) {
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      }
+      <span class="spacer"></span>
+      <div class="d-flex align-items-center">
+        <app-reload></app-reload>
+        <div class="px-5">
+          <button class="position-relative chat-box" (click)="openChat()">
+            <mat-icon>sms</mat-icon>
+          </button>
+        </div>
+        <div class="profile-pic">
+          <button
+            aria-expanded="false"
+            class="account-dropdown"
+            data-bs-toggle="dropdown"
+          >
+            <img
+              onerror="this.onerror=null; this.src='image/default_picture.png'"
+              [src]="profilePicture" />
+            <span class="user-name">{{ firstName }}</span>
+          </button>
+          <ul class="dropdown-menu shadow">
+            @for (pages of TOP_NAV_ROUTES; track pages) {
+              <!-- TODO need to add back when ready to work -->
+                <li>
+              <a routerLink={{pages.link}} routerLinkActive="active-sub" class="dropdown-item d-flex align-items-center">
+
+                {{pages.name}}
+              </a>
+            </li>
+
+
+            }
+            <li class="">
+              <hr />
+              <a (click)="signOut()" class="d-flex justify-content-center dropdown-item text-danger logout" type="button">
+                <mat-icon>logout</mat-icon>
+                Sign Out
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </mat-toolbar>
+
+    <!-- Add Content Here -->
+    <main class="container-fluid mt-5 ">
+      <section class="pt-lg-4 pt-md-4 pt-sm-5 pt-4">
+        <router-outlet></router-outlet>
+      </section>
+    </main>
+  </mat-sidenav-content>
+
+  <!-- Chat Sidenav -->
+  <mat-sidenav-content>
+    <!-- ... existing content ... -->
+    <div class="d-flex align-items-center">
+      <div class="px-5">
+        <button class="position-relative chat-box" (click)="openChat()">
+          <mat-icon>sms</mat-icon>
+        </button>
+      </div>
+      <div class="profile-pic">
+        <!-- ... existing content ... -->
+      </div>
+    </div>
+    <!-- Add Content Here -->
+    <main class="container-fluid mt-5">
+      <section class="pt-lg-4 pt-md-4 pt-sm-5 pt-4">
+
+      </section>
+    </main>
+  </mat-sidenav-content>
+
+  <!-- Chat Sidenav -->
+  <mat-sidenav #chatDrawer position="end" mode="over" [opened]="isChatOpen" class="chat-sidenav" disableClose>
+    <app-chat-gpt (closeChat)="closeChat()"></app-chat-gpt>
+  </mat-sidenav>
+</mat-sidenav-container>

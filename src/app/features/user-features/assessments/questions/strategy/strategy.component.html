@@ -1,0 +1,276 @@
+<section class="full-width container-fluid py-5">
+  <form [formGroup]="strategyForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <article id="busiDiffSection">
+      <h2>Tell me about what you've already overcome
+        <mat-icon class="matTooltip" matSuffix matTooltip="Barriers are challenges to getting started, possible challenges are threats that could shut your business down and therefore need to be addressed.">info</mat-icon>
+      </h2>
+    </article>
+
+    <article id="barriers">
+      <p>Out of these barriers, which have you already overcome?</p>
+      <mat-form-field class="full-width">
+        <mat-label>Please select and Option(s)</mat-label>
+        <mat-select
+          *ngIf="!isNoneS1"
+          placeholder=""
+          formControlName="barriersOvercome"
+          multiple>
+          <mat-option
+            *ngFor="let iBarriersOvercome of barriersOvercomeFull"
+            [value]="iBarriersOvercome">
+            {{ iBarriersOvercome.name }}
+          </mat-option>
+          <mat-option
+            (click)="isNoneSelected(1)"
+            *ngFor="let iBarriersOvercome of barriersOvercomeNoneAbove"
+            [value]="iBarriersOvercome">
+            {{ iBarriersOvercome.name }}
+          </mat-option>
+        </mat-select>
+        <mat-select
+          *ngIf="isNoneS1"
+          placeholder=""
+          formControlName="barriersOvercome"
+          multiple>
+          <mat-option
+            (click)="isNoneSelected(1)"
+            *ngFor="let iBarriersOvercome of barriersOvercomeNoneAbove"
+            [value]="iBarriersOvercome">
+            {{ iBarriersOvercome.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </article>
+
+    <article id="threats">
+      <p>Out of these possible challenges, which have you taken action to address?</p>
+      <mat-form-field class="full-width">
+        <mat-label>Please select and Option(s)</mat-label>
+        <mat-select
+          *ngIf="!isNoneS2"
+          placeholder=""
+          formControlName="threatsOvercome"
+          multiple>
+          <mat-option
+            *ngFor="let threatsOver of threatsOvercomeFull"
+            [value]="threatsOver">
+            {{ threatsOver.name }}
+          </mat-option>
+          <mat-option
+            (click)="isNoneSelected(2)"
+            *ngFor="let threatsOver of threatsOvercomeNoneAbove"
+            [value]="threatsOver">
+            {{ threatsOver.name }}
+          </mat-option>
+        </mat-select>
+        <mat-select
+          *ngIf="isNoneS2"
+          placeholder=""
+          formControlName="threatsOvercome"
+          multiple>
+          <mat-option
+            (click)="isNoneSelected(2)"
+            *ngFor="let threatsOver of threatsOvercomeNoneAbove"
+            [value]="threatsOver">
+            {{ threatsOver.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </article>
+
+    <article id="busiPlanSection">
+      <h2>Do you have any of these things written down about your business?
+        <mat-icon class="matTooltip" matSuffix matTooltip="These things are handy to have when marketing your business, seeking capital and for your overall business strategy.">info</mat-icon>
+      </h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th scope="col"><!--Keep here blank --></th>
+            <th scope="col">Does not exist</th>
+            <th scope="col">Needs work</th>
+            <th scope="col">Good to go</th>
+          </tr>
+          </thead>
+          <tbody formArrayName="busiPlanArray">
+          <tr>
+            <td><p> Executive Summary or One Pager</p></td>
+            <td *ngFor = "let val of strategyRadBtn">
+              <mat-radio-group name="busiPlanExecSum" formControlName="busiPlanExecSum">
+                <mat-radio-button  [value]=val.value ></mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="strategyFormGroupControls.busiPlanExecSum.hasError('required')"> Select one </mat-error>
+            </td>
+          </tr>
+
+          <tr>
+            <td><p> Mission and Vision, Goals</p></td>
+            <td *ngFor = "let val of strategyRadBtn">
+              <mat-radio-group name="busiPlanMisVisGoal" formControlName="busiPlanMisVisGoal">
+                <mat-radio-button  [value]=val.value ></mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="strategyFormGroupControls.busiPlanMisVisGoal.hasError('required')"> Select one </mat-error>
+            </td>
+          </tr>
+
+          <tr>
+            <td><p> Business Summary</p></td>
+            <td *ngFor = "let val of strategyRadBtn">
+              <mat-radio-group name="busiPlanBusiSum" formControlName="busiPlanBusiSum">
+                <mat-radio-button  [value]=val.value ></mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="strategyFormGroupControls.busiPlanBusiSum.hasError('required')"> Select one </mat-error>
+            </td>
+          </tr>
+
+          <tr>
+            <td><p> Services and Products Description</p></td>
+            <td *ngFor = "let val of strategyRadBtn">
+              <mat-radio-group name="busiPlanOfferDescrip" formControlName="busiPlanOfferDescrip">
+                <mat-radio-button  [value]=val.value ></mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="strategyFormGroupControls.busiPlanOfferDescrip.hasError('required')"> Select one </mat-error>
+            </td>
+          </tr>
+
+          <tr>
+            <td><p> Industry Overview or Insights</p></td>
+            <td *ngFor = "let val of strategyRadBtn">
+              <mat-radio-group name="busiPlanIndustryOverview" formControlName="busiPlanIndustryOverview">
+                <mat-radio-button  [value]=val.value ></mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="strategyFormGroupControls.busiPlanIndustryOverview.hasError('required')"> Select one </mat-error>
+            </td>
+          </tr>
+          <tr>
+            <td><p> Target Market Description or Insights</p></td>
+            <td *ngFor = "let val of strategyRadBtn">
+              <mat-radio-group name="busiPlanTargetMarket" formControlName="busiPlanTargetMarket">
+                <mat-radio-button  [value]=val.value ></mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="strategyFormGroupControls.busiPlanTargetMarket.hasError('required')"> Select one </mat-error>
+            </td>
+          </tr>
+
+          <tr>
+            <td><p> Marketing Summary or Plan</p></td>
+            <td *ngFor = "let val of strategyRadBtn">
+              <mat-radio-group name="busiPlanMarketingSummary" formControlName="busiPlanMarketingSummary">
+                <mat-radio-button  [value]=val.value ></mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="strategyFormGroupControls.busiPlanMarketingSummary.hasError('required')"> Select one </mat-error>
+            </td>
+          </tr>
+
+          <tr>
+            <td><p> Sales Strategy or Plan</p></td>
+            <td *ngFor = "let val of strategyRadBtn">
+              <mat-radio-group name="busiPlanSaleStrategy" formControlName="busiPlanSaleStrategy">
+                <mat-radio-button  [value]=val.value ></mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="strategyFormGroupControls.busiPlanSaleStrategy.hasError('required')"> Select one </mat-error>
+            </td>
+          </tr>
+
+          <tr>
+            <td><p> Team Overview or Biography</p></td>
+            <td *ngFor = "let val of strategyRadBtn">
+              <mat-radio-group name="busiPlanTeamOverview" formControlName="busiPlanTeamOverview">
+                <mat-radio-button  [value]=val.value ></mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="strategyFormGroupControls.busiPlanTeamOverview.hasError('required')"> Select one </mat-error>
+            </td>
+          </tr>
+
+          <tr>
+            <td><p> Financial Projections</p></td>
+            <td *ngFor = "let val of strategyRadBtn">
+              <mat-radio-group name="busiPlanFinancialProjections" formControlName="busiPlanFinancialProjections">
+                <mat-radio-button  [value]=val.value ></mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="strategyFormGroupControls.busiPlanFinancialProjections.hasError('required')"> Select one </mat-error>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </article>
+
+
+
+
+
+
+    <div class="pt-5"></div>
+
+    <article id="keysToSuccessSection">
+      <h2>These may be keys to success for your business, what's their status?</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Not achieved or I’m not sure</th>
+            <th scope="col">Somewhat achieved</th>
+            <th scope="col">Achieved</th>
+          </tr>
+          </thead>
+          <tbody formArrayName="keysToSuccess">
+          <tr *ngFor="let item of keysToSuccessFormArray.controls; let i = index;">
+            <td><p>{{item.get('name')?.value}}</p></td>
+            <td *ngFor="let val of keysToSuccessRadBtn">
+              <div [formGroupName]="i">
+                <mat-radio-group formControlName="value" (change)="pushValue(i, val.value, 'keysToSuccess')">
+                  <mat-radio-button [value]="val.value"></mat-radio-button>
+                </mat-radio-group>
+                <mat-error *ngIf="item.get('value')?.hasError('required')">Select one</mat-error>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article id="offerFeaturesSection">
+      <h2>How would you rate the below features for your business?</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">A lot of work needed, not started or not sure</th>
+            <th scope="col">It's ok but could be better</th>
+            <th scope="col">We do this well</th>
+          </tr>
+          </thead>
+          <tbody formArrayName="offerFeatures">
+          <tr *ngFor="let item of offerFeaturesFormArray.controls; let i = index;">
+            <td><p>{{item.get('name')?.value}}</p></td>
+            <td *ngFor="let val of offerFeaturesRadBtn">
+              <div [formGroupName]="i">
+                <mat-radio-group formControlName="value" (change)="pushValue(i, val.value, 'offerFeatures')">
+                  <mat-radio-button [value]="val.value"></mat-radio-button>
+                </mat-radio-group>
+                <mat-error *ngIf="item.get('value')?.hasError('required')">Select one</mat-error>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+
+    <div class="pt-3"></div>
+    <div class="pt-3" *ngIf="!strategyForm.valid">
+      <label>Please fill in all fields before submitting, it helps me help you better.</label><br/><br/>
+    </div>
+    <button class="mat-focus-indicator bg-blue mat-button mat-button-base" mat-button-raised color="primary" type="submit" [disabled]="!strategyForm.valid">Submit</button>
+  </form>
+</section>
+
+<!--<app-countdown *ngIf="submitted" [showSplash]="this.showSplash" [textToShow]="this.textToShow" [counter]="time"></app-countdown>-->
+<div class="py-3"></div>

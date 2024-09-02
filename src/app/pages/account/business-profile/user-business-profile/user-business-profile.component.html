@@ -1,0 +1,128 @@
+<app-title [title]="title" [description]="description[0].desc"></app-title>
+
+<div class="w-75">
+  <form [formGroup]="businessProfileForm" (ngSubmit)="createBusinessProfile()">
+
+    <div *ngFor="let field of TEXT_FIELDS; trackBy: trackByFn">
+
+      <!-- Text Fields -->
+      <div *ngIf="field.type === 'text'">
+        <p>{{ field.question }}</p>
+        <input class="input form-control my-3" [type]="field.type" [placeholder]="field.placeholder" [formControlName]="field.name" required />
+      </div>
+
+      <!-- Select Fields -->
+      <div *ngIf="field.type === 'select'">
+        <div class="custom-select">
+          <p>{{ field.question }}</p>
+
+          <!-- Business Stage Dropdown -->
+          <ng-container *ngIf="field.name === 'businessStage'">
+            <mat-form-field appearance="fill" class="w-100 my-3">
+              <mat-label>{{ field.label }}</mat-label>
+              <mat-select [formControlName]="field.name" required>
+                <mat-option [value]="null" disabled>
+                  <span class="default-option">{{ field.label }}</span>
+                </mat-option>
+                <mat-option *ngFor="let choice of BUSINESS_STAGE" [value]="choice">
+                  {{ choice.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+
+          <!-- Business Registration Type Dropdown -->
+          <ng-container *ngIf="field.name === 'businessRegistrationType'">
+            <mat-form-field appearance="fill" class="w-100 my-3">
+              <mat-label>{{ field.label }}</mat-label>
+              <mat-select [formControlName]="field.name" required>
+                <mat-option [value]="null" disabled>
+                  <span class="default-option">{{ field.label }}</span>
+                </mat-option>
+                <mat-option *ngFor="let choice of TYPE_OF_BUSINESS_REGISTRATION" [value]="choice">
+                  {{ choice.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+
+          <!-- Target Market Dropdown -->
+          <ng-container *ngIf="field.name === 'targetMarket'">
+            <mat-form-field appearance="fill" class="w-100 my-3">
+              <mat-label>{{ field.label }}</mat-label>
+              <mat-select [formControlName]="field.name" required>
+                <mat-option [value]="null" disabled>
+                  <span class="default-option">{{ field.label }}</span>
+                </mat-option>
+                <mat-option *ngFor="let choice of TARGET_MARKET" [value]="choice">
+                  {{ choice.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+
+          <!-- Offer Type Dropdown -->
+          <ng-container *ngIf="field.name === 'offerType'">
+            <mat-form-field appearance="fill" class="w-100 my-3">
+              <mat-label>{{ field.label }}</mat-label>
+              <mat-select [formControlName]="field.name" required>
+                <mat-option [value]="null" disabled>
+                  <span class="default-option">{{ field.label }}</span>
+                </mat-option>
+                <mat-option *ngFor="let choice of PRODUCT_SERVICE" [value]="choice">
+                  {{ choice.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+
+          <!-- Industry Dropdown -->
+          <ng-container *ngIf="field.name === 'industry'">
+            <mat-form-field appearance="fill" class="w-100 my-3">
+              <mat-label>{{ field.label }}</mat-label>
+              <mat-select [formControlName]="field.name" (selectionChange)="onIndustrySelect($event.value)">
+                <mat-option *ngFor="let choice of industryList" [value]="choice">
+                  {{ choice.industryName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+
+          <!-- Sub-Industry Dropdown -->
+          <ng-container *ngIf="field.name === 'subIndustry'">
+            <mat-form-field appearance="fill" class="w-100 my-3">
+              <mat-label>{{ field.label }}</mat-label>
+              <mat-select [formControlName]="field.name" (selectionChange)="onSubIndustrySelect($event.value)">
+                <mat-option *ngFor="let choice of subIndustryList" [value]="choice">
+                  {{ choice.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+
+          <!-- Distribution Channel Multi-Select -->
+          <ng-container *ngIf="field.name === 'distributionChannel'">
+            <mat-form-field appearance="fill" class="w-100 my-3">
+              <mat-label>{{ field.label }}</mat-label>
+              <mat-select [formControlName]="field.name">
+                <mat-option *ngFor="let choice of distributionChannels" [value]="choice">
+                  {{ choice.channelName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+
+        </div>
+      </div>
+
+    </div>
+
+    <button mat-flat-button type="submit" [disabled]="businessProfileForm.invalid">
+      <ng-container *ngIf="!isLoading">Submit</ng-container>
+      <ng-container *ngIf="isLoading">
+        <app-loading [loadingMessage]="'Submitting'" [title]="'Create Account'"></app-loading>
+      </ng-container>
+    </button>
+
+  </form>
+</div>

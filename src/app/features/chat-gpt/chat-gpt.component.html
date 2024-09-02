@@ -1,0 +1,40 @@
+<div class="chat-container">
+  <!-- Fixed header -->
+  <div class="chat-header d-flex align-items-center">
+    <h4>
+      Aida - <span>Beta</span>
+    </h4>
+    <button mat-icon-button (click)="closeChatFn()" class="close-chat-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <!-- End of fixed header -->
+
+  <!-- Scrollable chat window -->
+  <div class="chat-window" #chatWindow>
+    <mat-card class="message" *ngFor="let message of messages">
+      <mat-card-header [ngClass]="message.sender === 'user' ? 'user-message' : 'ai-message'">
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ message.sender }}</mat-card-title>
+        <mat-card-subtitle>Just Now</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="message-content">{{ message.content }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- End of scrollable chat window -->
+
+</div>
+
+<!-- Fixed input form at the bottom of the screen based on window height -->
+<form (submit)="sendMessage($event)" class="chat-input-form">
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Enter your message</mat-label>
+    <input matInput [(ngModel)]="newMessage" name="newMessage" required>
+  </mat-form-field>
+  <button mat-icon-button aria-label="Send" type="submit" class="send-button" [disabled]="!newMessage">
+    <mat-icon>send</mat-icon>
+  </button>
+</form>
+<!-- End of fixed input form -->

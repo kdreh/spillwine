@@ -1,57 +1,80 @@
-@import './assets/style/_color';
-@import './assets//style/comp';
-* { 
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
+/* You can add global styles to this file, and also import other style files */
+@import '../src/styles/color';
+
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
-html{
-    font : normal 600 'Open Sans', sans-serif;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
-  }
- 
-.container {
-    width: 10% !important;
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #fff;
 }
 
-button {
-    border-radius: 0px !important;
-    letter-spacing: normal !important;
+.app-page-center {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.flex-col-item {
-    @include devices (mobile) {
-        min-width: 350px !important;
-    }
-  }
-  .section {
-    @include devices (mobile) {
-        padding: 0 !important;
-    }
-  }
-  .cta-page {
-    padding-top: $_30px;
+.primary {
+  background: $logo-purple !important;
 
-    .demo-text {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        flex-wrap: wrap;
-    }
-  }
-  .scroll-bar::-webkit-scrollbar{
-    display: none;
-  }
-  .iframe-scrollbar {
-    // display: none;
-  }
- iframe::-webkit-scrollbar {
-  overflow-y: hidden;
- }
- .nav-button {
-  width: 200px !important;
-  height: 50px !important;
-  font-weight:500 !important;
-  // border-radius: 200px !important;
+}
+.page-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.page-center-75 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  flex-direction: column;
+
+}
+.primary-gradient {
+  background-size: cover; /* Cover the entire viewport */
+  /* Make the background fixed */
+  background: linear-gradient(to bottom, $logo-blue, $logo-purple) fixed;
+}
+.hidden{
+  display: none;
+}
+.show{
+  display: block;
+}
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.coming-soon {
+  height:500px;
+}
+.card {
+  box-shadow: $shadow;
+  outline: none !important;
+  border: none !important;
+}
+
+.card-emphasis{
+  font-size: 2.3em;
+  font-weight: 400;
+}
+.card-bottom-border-purple {
+  border-bottom: .4em solid $logo-purple !important;
+}
+.card-bottom-border-green {
+  border-bottom: .4em solid $logo-green !important;
+}
+.card-bottom-border-blue {
+  border-bottom: .4em solid $logo-blue !important;
+}
+.card-bottom-border-dark-gray {
+  border-bottom: .4em solid $dark-gray !important;
 }

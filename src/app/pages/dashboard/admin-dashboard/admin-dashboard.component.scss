@@ -1,0 +1,85 @@
+@import "../../../../styles/color";
+@import "../../../../styles/variables";
+@import "../../../../styles/forms";
+.card {
+  // border-bottom: $logo-purple .4em solid !important;
+
+}
+button {
+  margin: 10px 10px 0 0;
+}
+
+a {
+  width: 100%;
+  transition: all .2s ease-in-out;
+  border:none;
+}
+a:hover {
+  transform: scale(1.1);
+}
+.hw-70 {
+  width:76%;
+}
+
+.copy-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: -30px; /* Adjust this value as needed */
+}
+
+.copy-button mat-icon {
+  font-size: 20px; /* Adjust the size as needed */
+}
+
+.access-code {
+  min-width: 25em
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+.title {
+  flex: 1; /* Title takes up the remaining space */
+}
+
+.date-time {
+  font-size: 1rem;
+  color: #757575;
+}
+.access-code{
+  min-width: 30%;
+
+}
+.table-responsive{
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #fff; /* Inner border */
+  box-shadow: 0 0 0 1px lightgrey;
+}
+
+.input-group .form-control {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-group-append .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.card:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}

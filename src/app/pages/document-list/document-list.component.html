@@ -1,0 +1,54 @@
+@defer {
+  <ng-container *ngIf="documents.length > 0 || adminUserDocuments.length >0; else noDocuments">
+    <div class="d-flex justify-content-between m-auto">
+      <app-title [title]="isAdmin ? 'Meeting Notes' : 'User Documents'" [description]="description[1].desc"></app-title>
+      <div class="spacer ml-auto">
+        <button class="m-3" mat-fab extended (click)="fileInput.click()">
+          <mat-icon>upload</mat-icon> Document
+        </button>
+        <app-upload #uploadComponent="appUpload"></app-upload>
+        <input type="file" #fileInput style="display: none;" (change)="uploadComponent.onFileSelected($event)" accept=".pdf">
+      </div>
+    </div>
+
+    <!-- Add row here -->
+    <div class="row">
+      <ng-container *ngFor="let document of documents; trackBy: trackByDocument">
+        <ng-container *ngIf="document.role === 'admin' && isAdmin || document.role !== 'admin' && !isAdmin">
+          <!-- Place each card within its own column -->
+          <div class="col-lg-3 col-md-4 col-sm-12 mb-4">
+            <div class="card show h-100">
+              <div class="d-flex align-items-center">
+                <div class="card-body ">
+                  <h5 class="card-title">{{ getCleanFileName(document.blobName) }}</h5>
+                  <p>{{document.firstName}} {{document.lastName}}</p>
+                  <a mat-button [href]="document.url" download="{{ getCleanFileName(document.blobName) }}" class="card-link">
+                    <mat-icon>download</mat-icon> Download
+                  </a>
+                </div>
+                <div class="mat-icon-brand">
+                  <mat-icon>picture_as_pdf</mat-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div> <!-- end of div.row -->
+  </ng-container>
+
+  <ng-template #noDocuments>
+    <div class="page-center-75">
+      <no-data [title]="'No documents found for this user'"></no-data>
+      <button class="m-3" mat-fab extended (click)="fileInput.click()">
+        <mat-icon>upload</mat-icon> Document
+      </button>
+      <app-upload #uploadComponent="appUpload"></app-upload>
+      <input type="file" #fileInput style="display: none;" (change)="uploadComponent.onFileSelected($event)" accept=".pdf">
+    </div>
+  </ng-template>
+}
+
+@placeholder(minimum 1000ms) {
+  <app-splash-screen></app-splash-screen>
+}

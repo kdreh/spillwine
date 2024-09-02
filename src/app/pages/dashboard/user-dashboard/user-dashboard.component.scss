@@ -1,0 +1,18 @@
+@import "../../../../styles/color";
+@import "../../../../styles/variables";
+@import "../../../../styles/forms";
+button {
+  margin: 10px 10px 0 0;
+}
+
+a {
+  width: 100%;
+  transition: all .2s ease-in-out;
+  border:none;
+}
+a:hover {
+  transform: scale(1.1);
+}
+.hw-70 {
+  width:76%;
+}

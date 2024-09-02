@@ -1,0 +1,27 @@
+@import '../../../../styles/components';
+@import '../../../../styles/color';
+@import '../../../../styles/mixins';
+@import '../../../../styles/forms';
+@import '../../../../styles/auth';
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap:1em;
+  margin:auto;
+}
+.card {
+  border-radius: $card-radius;
+
+
+  @include for-size(medium){
+    background: $white !important ;
+    border-left: .2em solid $logo-blue !important;
+    gap: 1em;
+  }
+  @include for-size(small){
+    border-left: .3em solid $logo-purple ;
+    color: black;
+
+  }
+}

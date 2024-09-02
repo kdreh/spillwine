@@ -1,0 +1,54 @@
+<main class="app-primary-gradient">
+  <section class="container-fluid app-page-center">
+    <div class="card d-flex justify-content-center align-items-center">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 d-flex align-content-center">
+
+          <form (ngSubmit)="signIn()" [formGroup]="signInForm">
+            <div class="logo my-3">
+              <img [alt]="altText" [src]="logo"/>
+              <h2 class="mx-2">{{ title }}</h2>
+            </div>
+            @for (fields of SIGN_IN_FIELDS; track fields) {
+              <input class="form-control my-3 input" [type]="fields.type" [placeholder]="fields.placeholder"
+                     [formControlName]="fields.name"/>
+              @if (signInForm.get(fields.name)?.invalid && signInForm.get(fields.name)?.touched) {
+                <app-alerts [alertType]="'text-danger'" [alert]="fields.errorMessage"></app-alerts>
+              }
+            }
+            @for (fields of ROLE_DROPDOWN_FIELDS; track fields) {
+              <div class="custom-select">
+                <select class="form-select my-3" [formControlName]="fields.name" required>
+                  <option value="" disabled><span class="default-option">{{ fields.label }}</span></option>
+                  @for (role of USER_TYPE; track role) {
+                    <option [value]="role">{{ role }}</option>
+                  }
+                </select>
+                @if (signInForm.get(fields.name)?.invalid && signInForm.get(fields.name)?.touched) {
+                  <app-alerts [alertType]="'text-danger'" [alert]="fields.errorMessage"></app-alerts>
+                }
+              </div>
+            }
+            <div class="column">
+              <div class="w-50 mb-2">
+                <a mat-button routerLink="/forgot-password">Forgot Password?</a>
+                <a mat-button routerLink="/sign-up">Create an Account</a>
+              </div>
+              <button [disabled]="signInForm.invalid" mat-flat-button>
+                @if(isLoading){
+                  Submit
+                } @else if (!isLoading){
+                  <app-loading [loadingMessage]="'Submitting'" [title]="'Create Account'"></app-loading>
+                }
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 ">
+          <img [alt]=altText [src]=signInImage class="app-right-image" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>

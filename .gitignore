@@ -1,4 +1,4 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # Compiled output
 /dist
@@ -40,3 +40,13 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+/.vs/sustainible-app-v4.0-dashboard/v17
+.vs/slnx.sqlite
+.vs/sustainible-app-v4.0-dashboard/config/applicationhost.config
+.vs/sustainible-app-v4.0-dashboard/FileContentIndex/7f1b9d78-3edd-44bb-a3c9-3a73d57e92e2.vsidx
+.vs/sustainible-app-v4.0-dashboard/FileContentIndex/5f2adb86-b42b-4ade-a861-f3d46222c00a.vsidx
+/.vs
+
+src/config.ts
+src/app/config.ts

@@ -1,0 +1,20 @@
+@defer {
+    <section class="">
+      <app-title [title]="title" [description]="description[1].desc"></app-title>
+
+      <div class="row p-4">
+        @for(route of links; track route){
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <app-button-card class="mx-1" [linkClass]="route.bgColor" [linkUrl]="route.linkUrl" [link]="route.linkName"></app-button-card>
+          </div>
+        }
+      </div>
+    </section>
+
+
+} @placeholder (minimum 1000ms){
+<div class="center">
+<app-splash-screen></app-splash-screen>
+</div>
+}
+

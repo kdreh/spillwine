@@ -1,0 +1,102 @@
+
+
+  @if(isEmpty){
+    <div class="no-data">
+      <no-data></no-data>
+    </div>
+  }
+  @else {
+
+<app-dashboard-buttons></app-dashboard-buttons>
+    <section class="container-fluid my-3">
+      <h5 class="my-3"><strong>User Dashboard Statistics</strong></h5>
+
+      <div class="row">
+        <!-- User total documents card -->
+        <div class="col-md-4 mt-3" style="padding: 0 5px;">
+          <mat-card class="card text-white logo-purple shadow w-100">
+            <div class="card-body d-flex flex-column align-items-start">
+              <h5 class="card-title mb-2"><strong>Documents</strong></h5>
+              <p class="card-text mb-3">Total Documents: <strong>{{ totalUserDocs }}</strong></p>
+              <button class="text-light rounded" mat-icon-button routerLink="/app/user-documents">
+                <mat-icon>visibility</mat-icon>
+              </button>
+            </div>
+          </mat-card>
+        </div>
+
+
+        <div class="col-md-4 mt-3" style="padding: 0 5px;">
+          <mat-card class="card text-white logo-green shadow w-100">
+            <div class="card-body d-flex flex-column align-items-start">
+              <h5 class="card-title mb-2"><strong>Action Items</strong></h5>
+              <p class="card-text mb-3">Total Action Items: <strong>{{ todosCount }}</strong></p>
+              <button class="text-light rounded" mat-icon-button routerLink="/app/todo-list">
+                <mat-icon>visibility</mat-icon>
+              </button>
+            </div>
+          </mat-card>
+        </div>
+
+        <div class="col-md-4 mt-3" style="padding: 0 5px;">
+          <mat-card class="card text-muted bg-white  w-100">
+            <div class="card-body d-flex flex-column align-items-start">
+              <h5 class="card-title mb-2"><strong>Business Score</strong></h5>
+              <p class="card-text mb-3">Feature Coming Soon</p>
+              <button class="text-light rounded" mat-icon-button routerLink="/app/user-documents" disabled>
+                <mat-icon>visibility</mat-icon>
+              </button>
+            </div>
+          </mat-card>
+        </div>
+
+
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <!--TODO! Check logic that assigns thumb-->
+
+
+  <!--  @for(data of userScore; track data;) {
+      <section class="container-fluid p-5">
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-sm-12">
+            <a class="btn hover-effect" routerLink="/app/strategy-result">
+              <app-card [cardSubtitle]="'Strategy'" [bottomBorderColor]="'card-bottom-border-purple'" [scoreGrade]="rateStrategy" [iconColor]=color [emphasis]="'card-emphasis'" [color]="''" [cardData]="data.strategy">
+              </app-card>
+            </a>
+
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-12">
+            <a class="btn hover-effect" routerLink="/app/marketing-result">
+              <app-card [cardSubtitle]="'Marketing'" [bottomBorderColor]="'card-bottom-border-blue'" [scoreGrade]="rateMarketing" [iconColor]=color [emphasis]="'card-emphasis'" [cardData]="data.marketing"></app-card>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-12">
+            <a class="btn hover-effect" routerLink="/app/operation-result">
+              <app-card [cardSubtitle]="'Operations'" [bottomBorderColor]="'card-bottom-border-green'" [scoreGrade]="rateOperations" [icon]=color [emphasis]="'card-emphasis'" [cardData]="data.operations"></app-card>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-12">
+            <a class="btn hover-effect" routerLink="/app/team-result">
+              <app-card [cardSubtitle]="'Team'" [bottomBorderColor]="'card-bottom-border-dark-gray'" [scoreGrade]="rateTeam" [iconColor]=color [emphasis]="'card-emphasis'" [cardData]="data.team"></app-card>
+            </a>
+          </div>
+        </div>
+      </section>
+    }-->
+  }
+
+
+
+
+
+

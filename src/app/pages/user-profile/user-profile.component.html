@@ -1,0 +1,119 @@
+@defer {
+
+
+<section class="container-fluid mt-4" *ngIf="entrepreneur; else noData">
+  <app-back [name]="'Go Back'"></app-back>
+  <div class="row">
+    <!-- Profile Information -->
+    <div class="col-md-3 text-center">
+      <mat-card class="shadow-sm">
+        <img [src]="entrepreneur.profilePic" alt="{{ entrepreneur.firstName }} {{ entrepreneur.lastName }}" class="w-100">
+        <mat-card-content>
+          <h4>{{ entrepreneur.firstName }} {{ entrepreneur.lastName }}</h4>
+          <p>{{ entrepreneur.email }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-md-9">
+      <!-- Business Information Section -->
+      <mat-card class="shadow-sm p-2">
+        <h3>Business Information</h3>
+        <div class="table-responsive">
+          <table class="table table-borderless table-striped">
+            <tbody>
+            <tr><th>Business Name</th><td>{{ entrepreneur.businessInfo[0].businessName }}</td></tr>
+            <tr><th>Business Stage</th><td>{{ entrepreneur.businessInfo[0].businessStage }}</td></tr>
+            <tr><th>Registration Type</th><td>{{ entrepreneur.businessInfo[0].businessRegistrationType }}</td></tr>
+            <tr><th>Industry</th><td>{{ entrepreneur.businessInfo[0].industry }}</td></tr>
+            <tr><th>Sub-Industry</th><td>{{ entrepreneur.businessInfo[0].subIndustry }}</td></tr>
+            <tr><th>Offer Type</th><td>{{ entrepreneur.businessInfo[0].offerType }}</td></tr>
+            <tr><th>Distribution Channel</th><td>{{ entrepreneur.businessInfo[0].distributionChannel }}</td></tr>
+            <tr><th>Target Market</th><td>{{ entrepreneur.businessInfo[0].targetMarket }}</td></tr>
+            <tr><th>Created At</th><td>{{ entrepreneur.businessInfo[0].createdAt | date }}</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+
+<section class="container-fluid my-4">
+  <h3>Recent Todos</h3>
+  <mat-accordion *ngIf="entrepreneur.todoList?.length; else noTodos">
+    <mat-expansion-panel expanded>
+      <mat-expansion-panel-header class="p-2">
+        <mat-panel-title class="text-muted">
+          Todos
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div *ngFor="let todo of entrepreneur.todoList">
+
+        <ul class="list-group m-2">
+          <li class="list-group-item d-flex justify-content-between">
+            <div class="card-title fw-bold">
+              {{ todo.title }}
+            </div>
+            <div >
+              <strong>Category:</strong> {{ todo.category }}
+            </div>
+            <div>
+              <strong>Status:</strong>
+              <span class="badge rounded-pill" [ngClass]="{
+                'bg-success': todo.status === 'In Progress',
+                'bg-warning': todo.status === 'pending',
+                'bg-danger': todo.status === 'Not Started'
+              }">{{ todo.status }}</span>
+            </div>
+
+          </li>
+        </ul>
+      </div>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <ng-template #noTodos>
+    <no-data [title]="'There are no todos for this user'"></no-data>
+  </ng-template>
+</section>
+
+<section class="container-fluid" >
+  <h3>Documents</h3>
+  <mat-card class="shadow-sm"*ngIf="entrepreneur.documents?.length;  else noDocs">
+
+    <div class="table-responsive">
+      <table class="table table-borderless table-striped">
+        <thead>
+        <tr>
+          <th>Document Title</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let doc of entrepreneur.documents">
+          <td>{{ getFileName(doc)}}</td>
+          <td>
+            <a mat-flat-button color="primary" [href]="doc" target="_blank">View Document</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card>
+  <ng-template #noDocs>
+    <no-data [title]="'There are no todos for this user'"></no-data>
+  </ng-template>
+
+</section>
+
+<ng-template #noData>
+ <no-data [title]="'There are no documents or todos for this user'"></no-data>
+</ng-template>
+
+} @placeholder (minimum 2000ms){
+  <app-splash-screen></app-splash-screen>
+}

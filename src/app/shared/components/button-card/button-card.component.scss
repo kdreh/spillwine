@@ -1,0 +1,26 @@
+@import "../../../../styles/color";
+@import "../../../../styles/components";
+@import '../../../../styles/mixins';
+@import '../../../../styles/forms';
+@import '../../../../styles/variables';
+
+.card {
+  border-radius: $card-radius;
+  box-shadow: $shadow;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  border: none;
+  height: 25em;
+
+  span {
+    text-align: center;
+    margin: 1em;
+  }
+}
+.card:hover {
+  transform: scale(1.03);
+  transition-duration: 0.7s;
+  cursor: pointer;
+}

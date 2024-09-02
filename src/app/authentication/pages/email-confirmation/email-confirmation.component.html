@@ -1,0 +1,23 @@
+<main class="app-primary-gradient">
+  <section class="container-fluid app-page-center">
+    <div class="card d-flex justify-content-center align-items-center">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 ">
+          <app-back [name]="'Back to Sign in'"></app-back>
+          <div class="logo my-3">
+            <img [alt]="altText" [src]="logo"/>
+            <h2 class="mx-2">{{ title }}</h2>
+            <!--!TODO add user email address-->
+            <p *ngFor="let text of subText" [innerHTML]="text"></p>
+
+            <button (click)="resendEmail()" mat-flat-button>Resend email</button>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 ">
+          <img [alt]=altText [src]=signInImage class="app-right-image" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>

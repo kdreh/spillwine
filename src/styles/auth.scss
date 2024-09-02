@@ -1,0 +1,107 @@
+@import 'components';
+@import 'color';
+@import 'mixins';
+@import 'forms';
+
+main {
+  @include for-size(small) {
+    display: block;
+  }
+}
+
+.card {
+  border-radius: $card-radius;
+  box-shadow: $shadow;
+  padding: $card-padding;
+  min-width: 30%;
+
+  .logo {
+    margin-bottom: 1em;
+  }
+
+  .app-right-image {
+    height: auto;
+
+    @include for-size(medium) {
+      display: block !important;
+      max-width: 320px !important;
+    }
+    @include for-size(small) {
+      display: none;
+    }
+  }
+
+  h2 {
+    font-weight: 300;
+  }
+
+}
+
+.w-50 {
+  @include for-size(small) {
+    width: 55% !important;
+  }
+}
+
+.email-confirm {
+  color: $logo-purple;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+input[type='text'].ng-touched.ng-invalid {
+  border: 2px solid red;
+  color: red;
+}
+
+input[type='text'].ng-touched.ng-valid {
+  border: 2px solid green;
+  color: green;
+}
+
+input[type='email'].ng-touched.ng-invalid {
+  border: 2px solid red;
+  color: red;
+}
+
+input[type='email'].ng-touched.ng-valid {
+  border: 2px solid green;
+  color: green;
+}
+
+input[type='password'].ng-touched.ng-invalid {
+  border: 2px solid red;
+  color: red;
+}
+
+input[type='password'].ng-touched.ng-valid {
+  border: 2px solid green;
+  color: green;
+}
+
+select.ng-touched.ng-invalid {
+  border: 2px solid red;
+  color: red;
+}
+
+select.ng-touched.ng-valid {
+  border: 2px solid green;
+  color: green;
+}
+
+.custom-file-upload {
+  img {
+    border-radius: 50%; /* circular image */
+    width: 100px; /* width of the image */
+    height: 100px; /* height of the image */
+    object-fit: cover; /* maintain aspect ratio and cover the entire image area */
+  }
+}
+/**
+::ng-deep is deprecated but still working
+  !TODO may need to look for an alternative
+ */
+::ng-deep .stepper-without-header .mat-horizontal-stepper-header-container,
+::ng-deep .stepper-without-header .mat-vertical-stepper-header-container {
+  display: none;
+}

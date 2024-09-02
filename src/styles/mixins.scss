@@ -1,0 +1,16 @@
+$breakpoints: (
+  small: 360px,
+  medium: 768px,
+  large: 992px,
+  x-large: 1200px,
+);
+
+@mixin for-size($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content
+    }
+  } @else {
+    @warn "Unknown Screen `#{breakpoint}`";
+  }
+}

@@ -1,0 +1,13 @@
+<mat-card class="card" [ngClass]="bottomBorderColor">
+  <mat-card-header>
+    <mat-card-title>{{cardText}}</mat-card-title>
+    <mat-card-subtitle>{{cardSubtitle}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="d-flex justify-content-between">
+      <p [ngClass]="emphasis">{{cardData}}
+      </p>
+      <span class="float-end" [ngClass]="color"><mat-icon>{{scoreGrade}}</mat-icon></span>
+    </div>
+  </mat-card-content>
+</mat-card>
