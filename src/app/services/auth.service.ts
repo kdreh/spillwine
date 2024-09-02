@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {API_URL} from "../../config";
+
 import {HttpClient } from "@angular/common/http";
 import {ToastrService} from "ngx-toastr";
 import {catchError, Observable, tap, throwError} from "rxjs";
@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 providedIn: 'root'
 })
 export class AuthService {
-private api = API_URL;
+
 private authenticated:boolean = false;
 
 private http = inject(HttpClient);
@@ -22,7 +22,7 @@ private router = inject(Router);
 
   createUserAccount(user: any) {
     localStorage.setItem('email', user.email);
-    return this.http.post(`${this.api}/register`, user)
+    return this.http.post(`/v1/api/register`, user)
       .pipe(
         tap((response:any) => console.log(response.token)),    // add the 'tap' operator here
         catchError((error: any) => {
@@ -37,7 +37,7 @@ private router = inject(Router);
       );
   }
   signIn(credentials: { email: any, password: any, role: any }): Observable<any> {
-    return this.http.post<{ token: string }>(`${this.api}/login`, credentials)
+    return this.http.post<{ token: string }>(`/v1/api/login`, credentials)
       .pipe(
         tap((result: any) => {
             localStorage.setItem('auth_token', result.token);
@@ -95,19 +95,19 @@ private router = inject(Router);
   }
 
   sendVerificationEmail(email: string): Observable<any> {
-    return this.http.post(`${this.api}/send-verification-email`, { email });
+    return this.http.post(`/v1/api/send-verification-email`, { email });
   }
 
   resendVerificationEmail(email: string): Observable<any> {
-    return this.http.post(`${this.api}/resend-verification-email`, { email });
+    return this.http.post(`/v1/api/resend-verification-email`, { email });
   }
 
   forgotPassword(email: string): Observable<any> {
-    return this.http.post(`${this.api}/forgot-password`, { email });
+    return this.http.post(`/v1/api/forgot-password`, { email });
   }
 
   resetPassword(token: string, newPassword: string): Observable<any> {
-    return this.http.post(`${this.api}/reset-password?token=${encodeURIComponent(token)}`, { password: newPassword });
+    return this.http.post(`v1/api/reset-password?token=${encodeURIComponent(token)}`, { password: newPassword });
   }
 
 

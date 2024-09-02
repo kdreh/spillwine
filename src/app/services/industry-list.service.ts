@@ -4,7 +4,7 @@ import {catchError, Observable, of, tap, throwError} from "rxjs";
 import {Industry, DistributionChannel} from "../models/industry";
 
 import {ToastrService} from "ngx-toastr";
-import {API_URL} from "../../config";
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,6 @@ import {API_URL} from "../../config";
 export class IndustryListService {
 
 
-  private api = API_URL;
   private http = inject(HttpClient);
 
   private toastr = inject(ToastrService);
@@ -22,7 +21,7 @@ export class IndustryListService {
 
   createBusinessProfile(businessProfile: any) {
     console.log(businessProfile);
-    return this.http.post(`${this.api}/create-business-profile`, businessProfile)
+    return this.http.post(`/create-business-profile`, businessProfile)
       .pipe(
         tap((response: any) => {
           console.log('Business profile created successfully:', response);
@@ -56,23 +55,23 @@ export class IndustryListService {
 
 
   getIndustryAndSubIndustryList(): Observable<Industry[]> {
-    return this.http.get<Industry[]>(`${this.api}/industryList`);
+    return this.http.get<Industry[]>(`/industryList`);
   }
 
   // Fetch distribution list
   getDistributionList(): Observable<DistributionChannel[]> {
-    return this.http.get<DistributionChannel[]>(`${this.api}/distributionList`);
+    return this.http.get<DistributionChannel[]>(`/distributionList`);
   }
 
   // Fetch distribution channel info
   getDistributionDetails(id: string): Observable<any> {
-    return this.http.get<any>(`${this.api}/distribution-channel/${id}`, this.getHttpOptions())
+    return this.http.get<any>(`/distribution-channel/${id}`, this.getHttpOptions())
       .pipe(catchError(this.handleError<any>('getDistributionChannel', {})));
   }
 
   // Fetch industry and subindustry by name
   getIndustryDetails(industryId: string, subIndustryId: string): Observable<any> {
-    return this.http.get<any>(`${this.api}/get-industry/${industryId}/${subIndustryId}`, this.getHttpOptions())
+    return this.http.get<any>(`/get-industry/${industryId}/${subIndustryId}`, this.getHttpOptions())
       .pipe(catchError(this.handleError<any>('getSubIndustry', {})));
   }
   private handleError<T>(operation = 'operation', result: T | null = null) {

@@ -2,14 +2,14 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { API_URL } from "../../config";
+
 import { ToastrService } from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssessmentService {
-  private api = API_URL;
+
   private toastr = inject(ToastrService);
   private http = inject(HttpClient);
 
@@ -27,7 +27,7 @@ export class AssessmentService {
 
   postAssessment(values: any, uid: string, assessmentType: string): Observable<any> {
     // Construct the URL with uid and assessmentType
-    const url = `${this.api}/assessment/post/${encodeURIComponent(uid)}/${encodeURIComponent(assessmentType)}`;
+    const url = `/assessment/post/${encodeURIComponent(uid)}/${encodeURIComponent(assessmentType)}`;
     console.log('Requesting POST to:', url); // Debugging line
 
     // Construct the payload based on provided parameters

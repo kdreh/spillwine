@@ -3,7 +3,7 @@ import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GetDocumentsService } from './get-documents.service';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {API_URL} from "../../config";
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class DocumentSourceService {
   private destroy$: Subject<void> = new Subject<void>();
   private getDocumentService = inject(GetDocumentsService);
   private http =inject(HttpClient);
-  private apiUrl = API_URL
+
   constructor() { }
 
   private getHttpOptions() {

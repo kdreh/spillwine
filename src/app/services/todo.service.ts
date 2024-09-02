@@ -3,13 +3,13 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Todo, TodoResponse } from '../models/todo';
-import {API_URL} from "../../config";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  private api = API_URL;
+
 
 
   constructor(private http: HttpClient) {}
@@ -26,28 +26,28 @@ export class TodoService {
 
   // Admin bulk create todo items for entrepreneurs
   addTodosForEntrepreneurs(todos: Record<string, any>): Observable<any> {
-    return this.http.post(`${this.api}/todos/bulk-create`, todos, this.getHttpOptions()).pipe(
+    return this.http.post(`/todos/bulk-create`, todos, this.getHttpOptions()).pipe(
       tap((response) => console.log('Added todos for entrepreneurs:', response)),
       catchError(this.handleError)
     );
   }
   // Updated method to return TodoResponse
   getUserTodos(uid: string): Observable<TodoResponse> {
-    return this.http.get<TodoResponse>(`${this.api}/todos/get-all-todos/user/${encodeURIComponent(uid)}`, this.getHttpOptions()).pipe(
+    return this.http.get<TodoResponse>(`/todos/get-all-todos/user/${encodeURIComponent(uid)}`, this.getHttpOptions()).pipe(
       tap((response: TodoResponse) => console.log('Fetched todos:', response.todos)),
       catchError(this.handleError)
     );
   }
 
   createTodo(todo: Todo): Observable<Todo> {
-    return this.http.post<Todo>(`${this.api}/todos/create-todo`, todo, this.getHttpOptions()).pipe(
+    return this.http.post<Todo>(`/todos/create-todo`, todo, this.getHttpOptions()).pipe(
       tap((newTodo: Todo) => console.log('Added new todo:', newTodo)),
       catchError(this.handleError)
     );
   }
 
   updateTodo(uid: string, todoId: string, updatedTodo: Partial<Todo>): Observable<Todo> {
-    const url = `${this.api}/todos/update-todo/${encodeURIComponent(uid)}/${encodeURIComponent(todoId)}`;
+    const url = `/todos/update-todo/${encodeURIComponent(uid)}/${encodeURIComponent(todoId)}`;
     console.log('Requesting PUT to:', url); // Debugging line
 
     return this.http.put<Todo>(url, updatedTodo, this.getHttpOptions()).pipe(
@@ -61,7 +61,7 @@ export class TodoService {
 
 
   deleteTodo(uid: string, todoId: string): Observable<void> {
-    const url = `${this.api}/todos/delete-todo/${encodeURIComponent(uid)}/${encodeURIComponent(todoId)}`;
+    const url = `/todos/delete-todo/${encodeURIComponent(uid)}/${encodeURIComponent(todoId)}`;
     console.log('Requesting DELETE to:', url); // Debugging line
     return this.http.delete<void>(url, this.getHttpOptions()).pipe(
       tap(() => console.log('Deleted todo with ID:', todoId)),

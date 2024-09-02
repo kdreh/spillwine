@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient, } from '@angular/common/http';
 import { Observable, } from 'rxjs';
-import {API_URL} from "../../config";
+
 
 import {ToastrService} from "ngx-toastr";
 import {DOCUMENT} from "@angular/common";
@@ -11,7 +11,7 @@ import {DOCUMENT} from "@angular/common";
 })
 export class AccessCodeService {
 
-  private apiUrl = API_URL;
+
   private toastr = inject(ToastrService);
   private document = inject(DOCUMENT);
 
@@ -20,23 +20,23 @@ export class AccessCodeService {
 
   generateAccessCode(uid: string): Observable<any> {
     const body = {uid: uid}
-    return this.http.post<any>(`${this.apiUrl}/generate-access-code`, body);
+    return this.http.post<any>(`/generate-access-code`, body);
   }
 
   addAdminAccessCode(uid: any, accessCode: any): Observable<any> {
     const body = {uid: uid, accessCode: accessCode};
     console.log(body);
-    return this.http.post<any>(`${this.apiUrl}/access-code`, body);
+    return this.http.post<any>(`/access-code`, body);
   }
 
   removeAccessCode(accessCode: any, uid: any): Observable<any> {
     const body = {uid: uid, accessCode: accessCode};
-    return this.http.put<any>(`${this.apiUrl}/remove-access`, body);
+    return this.http.put<any>(`/remove-access`, body);
   }
 
   getUsersByAccessCode(accessCode: any): Observable<any> {
     console.log(accessCode);
-    return this.http.get<any>(`${this.apiUrl}/users-list/${accessCode}`);
+    return this.http.get<any>(`/users-list/${accessCode}`);
   }
 
 

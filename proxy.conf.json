@@ -1,0 +1,7 @@
+{
+  "/v1/api": {
+    "target": "https://bizpulse-api.azurewebsites.net/v1/api",
+    "secure": true,
+    "changeOrigin": true
+  }
+}

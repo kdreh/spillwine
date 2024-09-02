@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {API_URL} from "../../config";
+
 import {catchError, Observable, of, tap} from "rxjs";
 import {User} from "../models/users";
 import {map} from "rxjs/operators";
@@ -10,7 +10,7 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class GetUserDataService {
-  private api = API_URL;
+
   private http = inject(HttpClient);
 
   private getHttpOptions() {
@@ -27,7 +27,7 @@ export class GetUserDataService {
   getUserData(): Observable<User> {
     const uid = localStorage.getItem('uid');
     const header = this.getHttpOptions();
-    return this.http.get<User>(`${this.api}/user/${uid}`, header)
+    return this.http.get<User>(`/user/${uid}`, header)
       .pipe(
         catchError(this.handleError<any>('getUserData', {}))
       );
@@ -129,7 +129,7 @@ export class GetUserDataService {
 
   getUserBusinessProfile(uid: string): Observable<any> {
     const header = this.getHttpOptions();
-    return this.http.get<any>(`${this.api}/get-user-business-profile/:uid/`, {
+    return this.http.get<any>(`/get-user-business-profile/:uid/`, {
       ...header,
       params: { uid }
     })
