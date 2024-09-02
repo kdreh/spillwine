@@ -48,5 +48,5 @@ Thumbs.db
 .vs/sustainible-app-v4.0-dashboard/FileContentIndex/5f2adb86-b42b-4ade-a861-f3d46222c00a.vsidx
 /.vs
 
-src/config.ts
-src/app/config.ts
+
+src/env.ts
