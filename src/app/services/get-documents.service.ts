@@ -1,7 +1,7 @@
 import {Injectable, inject, OnDestroy} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {catchError, from, Observable, of, switchMap, tap} from 'rxjs';
-import {API_URL} from "../../config";
+
 import {UserProfileService} from "./user-profile.service";
 
 
@@ -10,7 +10,7 @@ import {UserProfileService} from "./user-profile.service";
   providedIn: 'root'
 })
 export class GetDocumentsService implements OnDestroy {
-  private apiUrl = API_URL
+
   private http = inject(HttpClient);
 
   private userProfileService = inject(UserProfileService);
@@ -37,7 +37,7 @@ export class GetDocumentsService implements OnDestroy {
       )
     ).pipe(
       switchMap((uid) =>
-        this.http.get<any>(`${this.apiUrl}/user-docs/${uid}`, this.getHttpOptions())
+        this.http.get<any>(`/user-docs/${uid}`, this.getHttpOptions())
 
       ),
       tap((data) =>  data),
@@ -54,7 +54,7 @@ export class GetDocumentsService implements OnDestroy {
       )
     ).pipe(
       switchMap((accessCode) =>
-        this.http.get<any>(`${this.apiUrl}/admin-client-docs/${accessCode}`, this.getHttpOptions())
+        this.http.get<any>(`/admin-client-docs/${accessCode}`, this.getHttpOptions())
 
       ),
       tap((data) => data),
